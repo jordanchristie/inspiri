@@ -1,6 +1,7 @@
 const express = require('express'),
       mongoose = require('mongoose'),
       bodyParser = require('body-parser'),
+      cookieSession = require('cookie-session'),
       keys = require('./config/keys'),
       PORT = 5000,
       app = express();
