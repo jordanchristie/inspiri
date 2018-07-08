@@ -1,7 +1,12 @@
 const express = require('express'),
+      mongoose = require('mongoose'),
       bodyParser = require('body-parser'),
+      keys = require('./config/keys'),
       PORT = 5000,
       app = express();
+
+mongoose.connect(keys.mongoURI);
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.send('It works boi!');
