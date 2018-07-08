@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Header extends Component {
-    constructor() {
-        super();
-    }
 
     render() {
         return (
