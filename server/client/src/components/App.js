@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LandingPage from './LandingPage';
 import Header from './Header';
 import Dashboard from './Dashboard';
+import ExplorePage from './ExplorePage';
 
 
 
@@ -16,6 +17,7 @@ class App extends Component {
           <Header />
               <Route exact path="/" component={LandingPage} />
               <Route path="/dashboard" component={Dashboard}/>
+              <Route path="/explore" component={ExplorePage} />
         </div>
         </Router>
       </div>
