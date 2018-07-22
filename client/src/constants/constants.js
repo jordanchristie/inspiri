@@ -1,1 +1,2 @@
 export const FETCH_USER = 'FETCH_USER';
+export const FETCH_EXPLORE_QUOTES = 'FETCH_EXPLORE_QUOTES';
