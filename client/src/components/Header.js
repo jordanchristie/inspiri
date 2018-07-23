@@ -9,8 +9,8 @@ class Header extends Component {
             <div className="nav-wrapper">
                 <Link to="/" className="left brand-logo"> Inspiri </Link>
                 <ul className="right">
-                    <li>Explore</li>
-                    <li>Profile</li>
+                <Link to="/explore"><li>Explore</li></Link>
+                <Link to="/dashboard"> <li>Profile</li> </Link>
                 </ul>
             </div>
         )

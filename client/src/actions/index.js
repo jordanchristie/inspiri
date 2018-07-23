@@ -9,9 +9,9 @@ export const fetchUser = async (dispatch) => {
 
 export const fetchExploreQuotes = async(dispatch) => {
     const res = await axios.get('http://api.forismatic.com/api/1.0/');
+    const data = await res.json();
 
-    dispatch({type: FETCH_EXPLORE_QUOTES, payload: res.data})
-        .then(res => res.json())
-        .then(data => console.log(data));
+    dispatch({type: FETCH_EXPLORE_QUOTES, payload: data})
+        
 
 }
