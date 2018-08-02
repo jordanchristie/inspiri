@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class ExplorePage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { exploreQuote: [] }
+    }
    
     componentDidMount() {
        this.renderQuotes();
@@ -13,11 +17,11 @@ class ExplorePage extends Component {
     }
 
     render() {
-        console.log(this.props);
+        console.log(this.state);
         return (
             <div>
                 <h1>Explore</h1>
-                <p> {this.props.quoteText} </p>
+                <p> {this.props.exploreQuote.quoteText} </p>
             </div>
         )
     }
