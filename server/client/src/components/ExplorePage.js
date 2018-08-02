@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class ExplorePage extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+   
     componentDidMount() {
-        this.renderQuotes();
+       this.renderQuotes();
     }
     
     renderQuotes() {
@@ -19,11 +16,18 @@ class ExplorePage extends Component {
         console.log(this.props);
         return (
             <div>
-            
+                <h1>Explore</h1>
+                <p> {this.props.quoteText} </p>
             </div>
         )
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        exploreQuote: state.exploreQuote
+    }
+}
 
-export default connect(null, actions)(ExplorePage);
+
+export default connect(mapStateToProps, actions)(ExplorePage);
