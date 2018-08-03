@@ -1,5 +1,32 @@
+html, #root {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+.brand-logo {
+  margin-left: 1em;
+}
+
+.card-title {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.card-content {
+  font-size: 2em;
+}
+
+#landing-page {
+  display: flex;
+  flex-flow: column;
+}
+
+#landing-page a {
+  margin: 1.5em auto;
 }
