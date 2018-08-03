@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import Card from './Card';
 
 class ExplorePage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { exploreQuote: [] }
-    }
    
     componentDidMount() {
        this.renderQuotes();
@@ -17,11 +14,12 @@ class ExplorePage extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div>
                 <h1>Explore</h1>
-                <p> {this.props.exploreQuote.quoteText} </p>
+                <Card 
+                    author={this.props.randomQuote.quoteAuthor}
+                    quote={this.props.randomQuote.quoteText}/>
             </div>
         )
     }
@@ -29,7 +27,7 @@ class ExplorePage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        exploreQuote: state.exploreQuote
+        randomQuote: state.randomQuote
     }
 }
 

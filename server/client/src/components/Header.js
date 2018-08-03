@@ -1,4 +1,4 @@
-import React, {  Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -6,13 +6,17 @@ class Header extends Component {
 
     render() {
         return (
-            <div className="nav-wrapper">
-                <Link to="/" className="left brand-logo"> Inspiri </Link>
-                <ul className="right">
-                <Link to="/explore"><li>Explore</li></Link>
-                <Link to="/dashboard"> <li>Profile</li> </Link>
-                </ul>
-            </div>
+            <Fragment>
+                <nav>
+                    <div className="nav-wrapper">
+                    <Link to="/" className="left brand-logo">Inspiri</Link>
+                    <ul id="nav-mobile" className="right">
+                        <li><Link to="/explore">Explore</Link></li>
+                        <li><Link to="/dashboard">Profile</Link></li>
+                    </ul>
+                    </div>
+                </nav>
+            </Fragment>
         )
     }
 }
