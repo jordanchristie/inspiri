@@ -9,8 +9,22 @@ body {
   font-family: sans-serif;
 }
 
+h1 {
+  text-align: center;
+}
+
 .brand-logo {
   margin-left: 1em;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-content {
+  font-size: 2em;
 }
 
 .card-title {
@@ -18,8 +32,8 @@ body {
   font-weight: 400;
 }
 
-.card-content {
-  font-size: 2em;
+.card-action {
+  font-size: 1.5em;
 }
 
 #landing-page {
@@ -29,4 +43,16 @@ body {
 
 #landing-page a {
   margin: 1.5em auto;
+}
+
+@media only screen and (max-width: 504px) {
+  .card-action {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .card-action {
+    height: 100%;
+  }
 }
