@@ -14,7 +14,6 @@ class ExplorePage extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <h1>Explore</h1>
@@ -26,10 +25,8 @@ class ExplorePage extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        randomQuote: state.randomQuote
-    }
+const mapStateToProps = ({randomQuote}) => {
+    return { randomQuote }
 }
 
 

@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Card = ({author, quote}) => {
+class Card extends Component {
+    constructor() {
+      super();
+    }
+
+  saveQuote = () => {
+    this.props.saveQuoteToProfile()
+  }  
+
+  render () {
+    const {author, quote} = this.props;
     return(
         <div className="row">
         <div className="col s12 ">
@@ -10,7 +20,7 @@ const Card = ({author, quote}) => {
               <p>{quote}</p>
             </div>
             <div className="card-action">
-              <a href=""><i className="fa fa-plus center"></i> Save to Collection</a>
+              <a onclick={this.saveQuote} href=""><i className="fa fa-plus center"></i> Save to Collection</a>
               <a href=""><i className="fa fa-facebook right"></i></a>
               <a href=""><i className="fa fa-twitter right"></i></a>
             </div>
@@ -19,6 +29,8 @@ const Card = ({author, quote}) => {
       </div>
               
     )
+  }
+    
 }
 
 export default Card;

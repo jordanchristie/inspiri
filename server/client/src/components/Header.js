@@ -13,6 +13,7 @@ class Header extends Component {
                     <ul id="nav-mobile" className="right">
                         <li><Link to="/explore">Explore</Link></li>
                         <li><Link to="/dashboard">Profile</Link></li>
+                        <li><a href="/api/logout">Logout</a></li>
                     </ul>
                     </div>
                 </nav>
