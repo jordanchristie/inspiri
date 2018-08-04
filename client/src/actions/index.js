@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { FETCH_USER,
          FETCH_EXPLORE_QUOTES,
-         QUOTE_URL } from '../constants/constants';
+         QUOTE_URL,
+         SAVE_QUOTE_TO_PROFILE } from '../constants/constants';
 
 export const fetchUser = (user) => {
     return dispatch => {
@@ -16,4 +17,11 @@ export const fetchExploreQuotes = () => {
             .then(res => res.json())
             .then(data => dispatch({type: FETCH_EXPLORE_QUOTES, payload: data}))
     } 
+}
+
+export const saveQuoteToProfile = () => {
+    return dispatch => {
+        axios.post('/api/saved')
+            .then(data => dispatch({ type: SAVE_QUOTE_TO_PROFILE, payload: data}))
+    }
 }
