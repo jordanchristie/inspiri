@@ -6,7 +6,7 @@ import { FETCH_USER,
 
 export const fetchUser = (user) => {
     return dispatch => {
-        axios.get('/api/user')
+        fetch('/api/user')
             .then(data => dispatch({ type: FETCH_USER, payload: user.data}));
     }    
 }
