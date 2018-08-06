@@ -19,14 +19,15 @@ class ExplorePage extends Component {
                 <h1>Explore</h1>
                 <Card 
                     author={this.props.randomQuote.quoteAuthor}
-                    quote={this.props.randomQuote.quoteText}/>
+                    quote={this.props.randomQuote.quoteText}
+                    savedQuote={this.props.savedQuote} />
             </div>
         )
     }
 }
 
-const mapStateToProps = ({randomQuote}) => {
-    return { randomQuote }
+const mapStateToProps = ({randomQuote, savedQuote}) => {
+    return { randomQuote, savedQuote }
 }
 
 

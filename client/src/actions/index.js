@@ -7,7 +7,7 @@ import { FETCH_USER,
 export const fetchUser = (user) => {
     return dispatch => {
         fetch('/api/user')
-            .then(data => dispatch({ type: FETCH_USER, payload: user.data}));
+            .then(data => dispatch({ type: FETCH_USER, payload: user}));
     }    
 }
 
@@ -22,6 +22,13 @@ export const fetchExploreQuotes = () => {
 export const saveQuoteToProfile = () => {
     return dispatch => {
         axios.post('/api/saved')
+            .then(data => dispatch({ type: SAVE_QUOTE_TO_PROFILE, payload: data}))
+    }
+}
+
+export const removeQuoteToProfile = () => {
+    return dispatch => {
+        axios.delete('/api/saved')
             .then(data => dispatch({ type: SAVE_QUOTE_TO_PROFILE, payload: data}))
     }
 }
