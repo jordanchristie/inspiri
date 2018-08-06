@@ -4,7 +4,7 @@ const express = require('express'),
       cookieSession = require('cookie-session'),
       passport = require('passport'),
       keys = require('./config/keys'),
-      PORT = 8000;
+      PORT = 5000;
 
 require('./models/User');
 require('./services/googlePassport');

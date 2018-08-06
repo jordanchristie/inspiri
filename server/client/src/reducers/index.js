@@ -4,7 +4,7 @@ import { authReducer } from './authReducer';
 import { quotesReducer } from './quotesReducer';
 
 const rootReducer = combineReducers({
-    loggedIn: authReducer,
+    user: authReducer,
     randomQuote: quotesReducer
 })
 
