@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class Card extends Component {
-    constructor() {
-      super();
-    }
 
   saveQuote = () => {
     this.props.saveQuoteToProfile()
@@ -20,7 +17,7 @@ class Card extends Component {
               <p>{quote}</p>
             </div>
             <div className="card-action">
-              <a onclick={this.saveQuote} href=""><i className="fa fa-plus center"></i> Save to Collection</a>
+              <a onClick={this.saveQuote} href=""><i className="fa fa-plus center"></i> Save to Collection</a>
               <a href=""><i className="fa fa-facebook right"></i></a>
               <a href=""><i className="fa fa-twitter right"></i></a>
             </div>
