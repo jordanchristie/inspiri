@@ -6,9 +6,10 @@ import { FETCH_USER,
 
 export const fetchUser = (user) => {
     return dispatch => {
-        fetch('/api/user')
-            .then(data => dispatch({ type: FETCH_USER, payload: user}));
-    }    
+        fetch('http://localhost:5000/api/user')
+        .then(dispatch({ type: FETCH_USER, payload: user}))
+    }
+        
 }
 
 export const fetchExploreQuotes = () => {

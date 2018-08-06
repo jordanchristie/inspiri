@@ -6,11 +6,11 @@ import * as actions from '../actions/index';
 class Dashboard extends Component {
 
     componentDidMount() {
-        console.log(this.props)
         this.props.fetchUser()
     }
 
     render() {
+        console.log(this.props)
       return (
         <div>
             <h1>User</h1>
