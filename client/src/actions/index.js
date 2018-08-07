@@ -7,7 +7,7 @@ import { FETCH_USER,
 
 export const fetchUser = (user) => {
     return dispatch => {
-        fetch('/api/user')
+        fetch('/api/user', {credentials: 'include'})
             .then(res => res.json())
             .then(user => dispatch({ type: FETCH_USER, payload: user}))
             .catch(err => console.log(err))
