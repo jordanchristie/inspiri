@@ -2,16 +2,16 @@ import axios from 'axios';
 import { FETCH_USER,
          FETCH_EXPLORE_QUOTES,
          QUOTE_URL,
-         SAVE_QUOTE_TO_PROFILE } from '../constants/constants';
+         SAVE_QUOTE_TO_PROFILE,
+         REMOVE_QUOTE_FROM_PROFILE } from '../constants/constants';
 
 export const fetchUser = (user) => {
     return dispatch => {
         fetch('/api/user')
-            .then(res => console.log(res))
+            .then(res => res.json())
             .then(user => dispatch({ type: FETCH_USER, payload: user}))
             .catch(err => console.log(err))
     }
-        
 }
 
 export const fetchExploreQuotes = () => {
@@ -31,10 +31,10 @@ export const saveQuoteToProfile = () => {
     }
 }
 
-export const removeQuoteToProfile = () => {
+export const removeQuoteFromProfile = () => {
     return dispatch => {
         axios.delete('/api/saved')
-            .then(data => dispatch({ type: SAVE_QUOTE_TO_PROFILE, payload: data}))
+            .then(data => dispatch({ type: REMOVE_QUOTE_FROM_PROFILE, payload: data}))
             .catch(err => console.log(err))
     }
 }
