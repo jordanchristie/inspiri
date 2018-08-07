@@ -16,8 +16,8 @@ class App extends Component {
           <div>
           <Header />
               <Route exact path="/" component={LandingPage} />
-              <Route path="/dashboard" component={Dashboard}/>
               <Route path="/explore" component={ExplorePage} />
+              <Route path="/dashboard" component={Dashboard}/>
         </div>
         </Router>
       </div>
@@ -25,9 +25,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({authorized}) => {
+const mapStateToProps = ({user}) => {
   return {
-      authorized
+      user
   }
 }
 
