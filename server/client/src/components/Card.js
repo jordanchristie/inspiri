@@ -11,7 +11,6 @@ class Card extends Component {
   }
 
   render () {
-    console.log(this.props)
     const {author, quote} = this.props;
     return(
         <div className="row">
