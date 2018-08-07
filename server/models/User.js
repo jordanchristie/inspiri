@@ -2,10 +2,17 @@ const mongoose = require("mongoose"),
       Schema  = mongoose.Schema;
       
 const userSchema = new Schema({
-    googleId: String,
-    name: String,
+    googleId: {
+        type: String,
+        unique: true,
+        required: true,    
+    },
+    name: {
+        type: String,
+        required: true,    
+    },
     savedQuotes: []
 });
 
-module.exports = mongoose.model('users', userSchema);
+module.exports = mongoose.model('User', userSchema);
 
