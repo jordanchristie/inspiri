@@ -1,6 +1,7 @@
 const express = require('express'),
       mongoose = require('mongoose'),
       bodyParser = require('body-parser'),
+      cors = require('cors'),
       cookieSession = require('cookie-session'),
       passport = require('passport'),
       keys = require('./config/keys'),
@@ -14,6 +15,8 @@ mongoose.connect(keys.mongoURI, { useNewUrlParser: true});
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors());
 
 app.use(
     cookieSession({

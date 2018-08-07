@@ -3,6 +3,7 @@ const mongoose = require("mongoose"),
       
 const userSchema = new Schema({
     googleId: String,
+    name: String,
     savedQuotes: []
 });
 
