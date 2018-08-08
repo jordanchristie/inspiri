@@ -29,7 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/googleRoute')(app);
-
+require('./routes/facebookRoute')(app);
 // const path = require('path');
 
 // app.get('*', (req, res) => {
