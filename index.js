@@ -8,16 +8,15 @@ const express = require('express'),
       PORT = 5000;
 
 require('./models/User');
-require('./services/passport');
-require('./services/googlePassport');
-require('./services/facebookPassport');
+require('./services/passport')
+
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true});
 
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 app.use(
@@ -30,9 +29,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 require('./routes/genRoutes')(app);
-require('./routes/googleRoute')(app);
-require('./routes/facebookRoute')(app);
+require('./routes/googleRoutes')(app);
+require('./routes/facebookRoutes')(app);
 // const path = require('path');
 
 // app.get('*', (req, res) => {

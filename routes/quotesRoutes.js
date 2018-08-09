@@ -1,5 +1,5 @@
 const express = require('express'),
-      user = require('../models/User'),
+      User = require('../models/User'),
       app = express();
 
 module.exports = (app) => {
