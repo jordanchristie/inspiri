@@ -2,15 +2,10 @@ const mongoose = require("mongoose"),
       Schema  = mongoose.Schema;
       
 const userSchema = new Schema({
-    id: {
-        type: String,
-        unique: true,
-        required: true,    
-    },
-
+    _id: mongoose.Schema.Types.ObjectId,
     name: {
         type: String,
-        required: true,    
+        required: true    
     },
     savedQuotes: []
 });
