@@ -4,16 +4,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy,
       mongoose = require('mongoose'),
       User = require('../models/User');
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-});
-
-passport.deserializeUser( (id, done) => {
-    User.findById(id, (err, user) => {
-        done(null, user);
-    })
-});
-
 passport.use( 
     new GoogleStrategy({
         clientID: keys.googleClientID,
@@ -28,7 +18,7 @@ passport.use(
             } else {
                 const newUser = new User({ 
                     googleId: profile.id,
-                    name: name.givenName
+                    name: profile.displayName
                     }).save();
             done(null, newUser);
             }

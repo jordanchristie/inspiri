@@ -4,6 +4,7 @@ const FacebookStrategy = require('passport-facebook').Strategy,
       mongoose = require('mongoose'),
       User = require('../models/User');
 
+
 passport.use(
       new FacebookStrategy({
             clientID: keys.facebookClientId,
@@ -12,14 +13,15 @@ passport.use(
             proxy: true
       },
       (accessToken, refreshToken, profile, done) => {
-            console.log(profile);
             User.findOne({id: profile.id}, (err, existingUser) => {
+                  console.log(profile.id)
                   if (existingUser) {
                         return done(null, existingUser)
                   } else {
                         const newUser = new User({
                               // enter schema info here
-                        })
+                              name: profile.displayName
+                        }).save();
                        return done(null, newUser) 
                   }
             })
