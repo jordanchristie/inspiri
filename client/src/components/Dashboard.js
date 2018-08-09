@@ -19,7 +19,7 @@ class Dashboard extends Component {
             })
         } else {  
             return <p> You don't have any quotes yet.
-                <Link to="/explore">Click here</Link> to start!
+                <Link to="/explore">  Click here</Link> to start!
             </p>
         }
     }

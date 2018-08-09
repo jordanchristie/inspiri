@@ -8,7 +8,9 @@ const express = require('express'),
       PORT = 5000;
 
 require('./models/User');
+require('./services/passport');
 require('./services/googlePassport');
+require('./services/facebookPassport');
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true});
 
@@ -28,6 +30,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+require('./routes/genRoutes')(app);
 require('./routes/googleRoute')(app);
 require('./routes/facebookRoute')(app);
 // const path = require('path');
