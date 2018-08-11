@@ -1,11 +1,11 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy,
       FacebookStrategy = require('passport-facebook').Strategy,
-      keys = require('../config/dev'),
       passport = require('passport'),
       mongoose = require('mongoose'),
+      keys = require('../config/dev'),
       User = require('../models/User');
 
-//Serialize & Deserialize ID
+// Serialize & Deserialize ID
 
 passport.serializeUser((user, done) => {
         done(null, user.id)
@@ -26,20 +26,27 @@ passport.use(
         callbackURL: '/auth/google/callback',
         proxy: true
     },
-      (accessToken, refreshToken, profile, done) => {
+    (accessToken, refreshToken, profile, done) => {
           console.log(accessToken);
           console.log(profile);
-        //  User.findOne({ googleId: profile.id}, (err, existingUser) => {
-        //     if (existingUser) {
-        //         return done(null, existingUser);
-        //     } else {
-        //         const newUser = new User({ 
-        //             _id: profile.id,
-        //             name: profile.displayName
-        //             }).save();
-        //     done(null, newUser);
-        //     }
-        //  })
+          // Check whether user exists
+         User.findOne({ googleId: profile.id}, (err, existingUser) => {
+            if (existingUser) {
+                console.log(existingUser)
+                return done(null, existingUser);
+            } 
+            // Create new User
+            const newUser =  new User({ 
+                google: {
+                    id: profile.id,
+                    name: profile.displayName
+                },
+                savedQuotes: []
+                }).save();
+            console.log('New User Created')
+            done(null, newUser);
+            
+         })
     })
 )
 
@@ -54,19 +61,22 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
           console.log(profile)
-          User.findOne({id: profile.id}, (err, existingUser) => {
-                if (existingUser) {
-                      return done(null, existingUser)
-                } else {
-                      const newUser = new User({
-                            _id: profile.id,
-                            name: profile.displayName,
-                            savedQuotes: []
-                      }).save();
-                     return done(null, newUser) 
-                }
-          })
+          User.findOne({facebookId: profile.id},(err, existingUser) => {
+            if (existingUser) {
+                return done(null, existingUser)
+            } 
+          })    
+                // Create new User
+          const newUser = new User({
+                facebook: {
+                    facebookId: profile.id,
+                    name: profile.displayName,
+                },
+                savedQuotes: []
+                }).save();
+                done(null, newUser) 
+                
     }
-))
+));
  
 

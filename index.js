@@ -8,7 +8,7 @@ const express = require('express'),
       PORT = 5000;
 
 require('./models/User');
-require('./services/passport')
+require('./services/passport');
 
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true});

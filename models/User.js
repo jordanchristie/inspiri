@@ -2,13 +2,20 @@ const mongoose = require("mongoose"),
       Schema  = mongoose.Schema;
       
 const userSchema = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    name: {
-        type: String,
-        required: true    
+    google: {
+        id: String,
+        name: String
+    },
+    facebook: {
+        id: String,
+        name: String
+    },
+    twitter: {
+        id: String,
+        name: String
     },
     savedQuotes: []
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = module.exports = mongoose.model('User', userSchema);
 
