@@ -1,21 +1,11 @@
 const mongoose = require("mongoose"),
-      Schema  = mongoose.Schema;
+     { Schema } = mongoose;
       
 const userSchema = new Schema({
-    google: {
-        id: String,
-        name: String
-    },
-    facebook: {
-        id: String,
-        name: String
-    },
-    twitter: {
-        id: String,
-        name: String
-    },
+    id: Number,
+    name: String,
     savedQuotes: []
-});
+}, {collection: 'users'});
 
-const User = module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('user', userSchema);
 
