@@ -3,16 +3,17 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy,
       passport = require('passport'),
       mongoose = require('mongoose'),
       keys = require('../config/dev'),
-      User = require('../models/User');
+      User = mongoose.model('user');
 
 // Serialize & Deserialize ID
 
 passport.serializeUser((user, done) => {
-        done(null, user.id)
+        done(null, user._id)
 });
 
 passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
+    const userId = mongoose.Schema.Types.ObjectId(id);
+    User.findById(userId, (err, user) => {
         done(err, user);
     })
 });
@@ -26,29 +27,26 @@ passport.use(
         callbackURL: '/auth/google/callback',
         proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
           console.log(accessToken);
           console.log(profile);
-          // Check whether user exists
-         User.findOne({ googleId: profile.id}, (err, existingUser) => {
+        // Check whether user exists
+         const existingUser = await User.findOne({ id: profile.id});
             if (existingUser) {
-                console.log(existingUser)
                 return done(null, existingUser);
-            } 
+            }
+         
             // Create new User
-            const newUser =  new User({ 
-                google: {
-                    id: profile.id,
-                    name: profile.displayName
-                },
+            const newUser =  await new User({ 
+                id: profile.id,
+                name: profile.displayName,
                 savedQuotes: []
                 }).save();
             console.log('New User Created')
-            done(null, newUser);
+          done(null, newUser);
             
-         })
-    })
-)
+    }
+));
 
 // Facebook Strategy
 
@@ -59,22 +57,19 @@ passport.use(
           callbackURL: '/auth/facebook/callback',
           proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
           console.log(profile)
-          User.findOne({facebookId: profile.id},(err, existingUser) => {
+          const existingUser = await User.findOne({ id: profile.id});
             if (existingUser) {
                 return done(null, existingUser)
-            } 
-          })    
+            }    
                 // Create new User
-          const newUser = new User({
-                facebook: {
-                    facebookId: profile.id,
-                    name: profile.displayName,
-                },
+          const newUser = await new User({
+                id: profile.id,
+                name: profile.displayName,
                 savedQuotes: []
                 }).save();
-                done(null, newUser) 
+          done(null, newUser) 
                 
     }
 ));
