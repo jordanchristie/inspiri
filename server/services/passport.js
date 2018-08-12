@@ -12,7 +12,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-    const userId = mongoose.Schema.Types.ObjectId(id);
+    const userId = mongoose.Types.ObjectId(id);
     User.findById(userId, (err, user) => {
         done(err, user);
     })
@@ -28,9 +28,8 @@ passport.use(
         proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-          console.log(accessToken);
-          console.log(profile);
         // Check whether user exists
+        console.log(profile)
          const existingUser = await User.findOne({ id: profile.id});
             if (existingUser) {
                 return done(null, existingUser);
@@ -39,10 +38,12 @@ passport.use(
             // Create new User
             const newUser =  await new User({ 
                 id: profile.id,
-                name: profile.displayName,
+                fullName: profile.displayName,
+                firstName: profile.name.givenName,
+                avatar: profile._json.image.url,
                 savedQuotes: []
                 }).save();
-            console.log('New User Created')
+            console.log(newUser)
           done(null, newUser);
             
     }
@@ -66,7 +67,9 @@ passport.use(
                 // Create new User
           const newUser = await new User({
                 id: profile.id,
-                name: profile.displayName,
+                fullName: profile.displayName,
+                firstName: profile.name.givenName,
+                avatar: profile._json.image.url,
                 savedQuotes: []
                 }).save();
           done(null, newUser) 

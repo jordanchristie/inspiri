@@ -3,7 +3,9 @@ const mongoose = require("mongoose"),
       
 const userSchema = new Schema({
     id: Number,
-    name: String,
+    fullName: String,
+    firstName: String,
+    avatar: String,
     savedQuotes: []
 }, {collection: 'users'});
 
