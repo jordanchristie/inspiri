@@ -12,9 +12,9 @@ class Dashboard extends Component {
         this.props.fetchUser()
     }
 
-    renderSavedQuotes() {
-        if (this.props.user.savedQuotes) {
-            this.props.user.savedQuotes.map((quote, i) => {
+    renderSavedQuotes(user) {
+        if (user.savedQuotes) {
+            user.savedQuotes.map((quote, i) => {
                 return <Card key={i} quote={quote}  />
             })
         } else {  
@@ -28,11 +28,12 @@ class Dashboard extends Component {
     render() {
         const { user } = this.props
       return (
-        <div>
-            <h1>{user.googleId}</h1> 
+        <div id="dashboard-page">
+            <img id="profile-pic" src={user.avatar} alt="profile pic" />
+            <h3>Welcome {user.firstName}</h3> 
             <hr />
             <section>      
-            {this.renderSavedQuotes()}
+            {this.renderSavedQuotes({user})}
             </section>
         </div>
     )  
