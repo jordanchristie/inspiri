@@ -25,7 +25,13 @@ export const fetchExploreQuotes = () => {
 
 export const saveQuoteToProfile = (quote) => {
     return dispatch => {
-        axios.post('/api/saved', quote)
+        fetch('/api/saved', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'post',
+            body: JSON.stringify(quote)
+        })
             .then(data => dispatch({type: SAVE_QUOTE_TO_PROFILE, payload: data}))
             .catch(err => console.log(err))
     }
