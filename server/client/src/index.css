@@ -1,4 +1,4 @@
-html, #root {
+html, body, #root {
   height: 100%;
   width: 100%;
 }
@@ -43,6 +43,14 @@ h1 {
 
 #landing-page a {
   margin: 1.5em auto;
+}
+
+/* === DASHBOARD PAGE === */
+
+#dashboard-page {
+  margin-top: 5%;
+  display: grid;
+  grid-auto-columns: sidebar 1fr main 3fr;
 }
 
 #profile-pic {

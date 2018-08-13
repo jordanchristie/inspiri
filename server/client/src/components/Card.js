@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import * as actions from '../actions/index';
+
 
 class Card extends Component {
 
   saveQuote = () => {
-    this.props.saveQuoteToProfile()
+    this.props.saveQuoteToProfile({
+      author: this.props.author,
+      quote: this.props.quote
+    })
   }
   
   removeQuote = () => {
@@ -21,7 +28,7 @@ class Card extends Component {
               <p>{quote}</p>
             </div>
             <div className="card-action">
-              <a onClick={this.props.savedQuote ? this.removeQuote : this.saveQuote} href="">
+              <a onClick={this.props.savedQuote ? this.removeQuote() : this.saveQuote()} href="">
                 <i className="fa fa-plus center"></i>
                  {this.props.savedQuote ? ' Saved' : ' Save Quote to Collection'}
               </a>
@@ -37,4 +44,4 @@ class Card extends Component {
     
 }
 
-export default Card;
+export default connect(null, actions)(Card);

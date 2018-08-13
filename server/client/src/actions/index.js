@@ -23,10 +23,10 @@ export const fetchExploreQuotes = () => {
     } 
 }
 
-export const saveQuoteToProfile = () => {
+export const saveQuoteToProfile = (quote) => {
     return dispatch => {
-        axios.post('/api/saved')
-            .then(data => dispatch({ type: SAVE_QUOTE_TO_PROFILE, payload: data}))
+        axios.post('/api/saved', quote)
+            .then(data => dispatch({type: SAVE_QUOTE_TO_PROFILE, payload: data}))
             .catch(err => console.log(err))
     }
 }

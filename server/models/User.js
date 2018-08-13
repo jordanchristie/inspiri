@@ -6,7 +6,10 @@ const userSchema = new Schema({
     fullName: String,
     firstName: String,
     avatar: String,
-    savedQuotes: []
+    savedQuotes: {
+        type: Array,
+        default: []
+    }
 }, {collection: 'users'});
 
 module.exports = mongoose.model('user', userSchema);
