@@ -1,5 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy,
       FacebookStrategy = require('passport-facebook').Strategy,
+      TwitterStrategy = require('passport-twitter').Strategy,
       passport = require('passport'),
       mongoose = require('mongoose'),
       keys = require('../config/dev'),
@@ -54,11 +55,13 @@ passport.use(
           clientID: keys.facebookClientId,
           clientSecret: keys.facebookClientSecret,
           callbackURL: '/auth/facebook/callback',
+          profileFields: ['id', 'name', 'photos'],
           proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
           console.log(profile)
           const existingUser = await User.findOne({ id: profile.id});
+
             if (existingUser) {
                 return done(null, existingUser)
             }    
@@ -67,7 +70,7 @@ passport.use(
                 id: profile.id,
                 fullName: profile.displayName,
                 firstName: profile.name.givenName,
-                avatar: profile._json.image.url,
+                avatar: profile.photos[0].value,
                 savedQuotes: []
                 }).save();
           done(null, newUser) 
@@ -75,4 +78,31 @@ passport.use(
     }
 ));
  
+// Twitter Strategy
+
+passport.use(
+    new TwitterStrategy({
+        consumerKey: keys.twitterClientId,
+        consumerSecret: keys.twitterClientSecret,
+        callbackURL: 'auth/twitter/callback'
+    },
+    async (accessToken, refreshToken, profile, done) => {
+        console.log(profile)
+        const existingUser = await User.findOne({ id: profile.id });
+
+            if (existingUser) {
+                done (null, existingUser);
+            }
+
+        const newUser = await new User({
+            id: profile.id,
+            fullName: profile.displayName,
+            firstName: profile.name.givenName,
+            savedQuotes: []
+        }).save();
+
+        done(null, newUser);
+    }
+    )
+)
 

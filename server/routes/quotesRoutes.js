@@ -4,8 +4,9 @@ const express = require('express'),
 
 module.exports = (app) => {
     app.post('/api/saved', (req, res, next) => {
-        console.log(req)
-        const user = new User();
+        console.log('gotcha!')
+        const newQuote = req.body
+        
 
         User.save()
             .then(res => res.json())

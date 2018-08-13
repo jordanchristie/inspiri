@@ -11,13 +11,18 @@ class Card extends Component {
       author: this.props.author,
       quote: this.props.quote
     })
+    
+   
   }
   
   removeQuote = () => {
     this.props.removeQuoteFromProfile()
+
+    
   }
 
   render () {
+    console.log(this.props)
     const {author, quote} = this.props;
     return(
         <div className="row">
@@ -43,5 +48,6 @@ class Card extends Component {
   }
     
 }
+
 
 export default connect(null, actions)(Card);
