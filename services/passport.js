@@ -29,7 +29,6 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
         // Check whether user exists
-        console.log(profile)
          const existingUser = await User.findOne({ id: profile.id});
             if (existingUser) {
                 return done(null, existingUser);
@@ -43,7 +42,6 @@ passport.use(
                 avatar: profile._json.image.url,
                 savedQuotes: []
                 }).save();
-            console.log(newUser)
           done(null, newUser);
             
     }
