@@ -1,16 +1,21 @@
 const express = require('express'),
       User = require('../models/User'),
-      app = express();
+      app = express(),
+      User = require('../models/User');
 
 module.exports = (app) => {
-    app.post('/api/saved', (req, res, next) => {
-        console.log('gotcha!')
-        const newQuote = req.body
+    
+    app.post('/api/saved', (req, res) => {
+        const {author, quote} = req.body;
         
-
-        User.save()
-            .then(res => res.json())
-            .catch(err => console.log(err))
+        const newQuote = User.findOne({ id: req.user.id }, (err, user) => {
+            user.savedQuotes.push({
+                author,
+                quote
+            });
+            user.save();
+        });
+        
     })
 
     app.delete('/api/saved/:id', (req, res, next) => {

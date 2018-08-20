@@ -1,7 +1,6 @@
 const express = require('express'),
       passport = require('passport'),
-      app = express(),
-      User = require('../models/User');
+      app = express();
 
 module.exports = (app) => {
 
@@ -18,20 +17,6 @@ module.exports = (app) => {
     app.get('/api/logout', (req, res) => {
          req.logout();
          res.redirect('/');
-    })
-
-    app.post('/api/saved', (req, res) => {
-        const {author, quote} = req.body;
-        
-        const newQuote = User.findOne({ id: req.user.id }, (err, user) => {
-            user.savedQuotes.push({
-                author,
-                quote
-            });
-            user.save();
-        });
-
-
     })
 
 }
