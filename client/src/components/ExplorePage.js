@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { fetchExploreQuotes } from '../actions/index';
 import Card from './Card';
 
 class ExplorePage extends Component {
@@ -20,16 +20,15 @@ class ExplorePage extends Component {
                 <h1>Explore</h1>
                 <Card 
                     author={this.props.randomQuote.quoteAuthor}
-                    quote={this.props.randomQuote.quoteText}
-                    savedQuote={this.props.savedQuote} />
+                    quote={this.props.randomQuote.quoteText} />
             </div>
         )
     }
 }
 
-const mapStateToProps = ({randomQuote, savedQuote}) => {
-    return { randomQuote, savedQuote }
+const mapStateToProps = ({randomQuote}) => {
+    return { randomQuote }
 }
 
 
-export default connect(mapStateToProps, actions)(ExplorePage);
+export default connect(mapStateToProps, {fetchExploreQuotes})(ExplorePage);
