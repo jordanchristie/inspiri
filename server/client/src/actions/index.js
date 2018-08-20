@@ -37,7 +37,7 @@ export const saveQuoteToProfile = (quote) => {
     }
 }
 
-export const removeQuoteFromProfile = () => {
+export const removeQuoteFromProfile = (id) => {
     return dispatch => {
         axios.delete('/api/saved')
             .then(data => dispatch({ type: REMOVE_QUOTE_FROM_PROFILE, payload: data}))

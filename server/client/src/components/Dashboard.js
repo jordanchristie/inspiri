@@ -19,8 +19,8 @@ class Dashboard extends Component {
                 <Link to="/explore">  Click here</Link> to start!
             </p>
         } else {  
-            return user.savedQuotes.map((quote) => {
-                return <Card key={quote.id} {...quote} />
+            return user.savedQuotes.reverse().map((quote, i) => {
+                return <Card key={i} {...quote} />
             })
 
         }
