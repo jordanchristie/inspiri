@@ -1,6 +1,7 @@
 const express = require('express'),
       passport = require('passport'),
-      app = express();
+      app = express(),
+      User = require('../models/User');
 
 module.exports = (app) => {
 
@@ -20,7 +21,17 @@ module.exports = (app) => {
     })
 
     app.post('/api/saved', (req, res) => {
+        const {author, quote} = req.body;
         
+        const newQuote = User.findOne({ id: req.user.id }, (err, user) => {
+            user.savedQuotes.push({
+                author,
+                quote
+            });
+            user.save();
+        });
+
+
     })
 
 }
