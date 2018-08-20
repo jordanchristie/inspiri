@@ -15,15 +15,13 @@ class Card extends Component {
    
   }
   
-  removeQuote = () => {
-    this.props.removeQuoteFromProfile()
-
-    
+  removeQuote = (id) => {
+    this.props.removeQuoteFromProfile(id)
   }
 
   render () {
-    
-    const {author, quote} = this.props;
+    console.log(this.props)
+    const {author, quote, isSaved, _id} = this.props;
     return(
         <div className="row">
         <div className="col s12 ">
@@ -33,9 +31,9 @@ class Card extends Component {
               <p>{quote}</p>
             </div>
             <div className="card-action">
-              <a onClick={this.props.isSaved ? this.removeQuote() : this.saveQuote()} href="">
+              <a onClick={() => isSaved ? this.removeQuote(_id) : this.saveQuote()} href="">
                 <i className="fa fa-plus center"></i>
-                 {this.props.isSaved ? ' Saved' : ' Save Quote to Collection'}
+                 {isSaved ? ' Saved' : ' Save Quote to Collection'}
               </a>
               <a href=""><i className="fa fa-facebook right"></i></a>
               <a href=""><i className="fa fa-twitter right"></i></a>

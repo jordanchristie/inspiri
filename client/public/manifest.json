@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "inspiri",
+  "name": "inspiri: Pocket Inspiration",
   "icons": [
     {
       "src": "favicon.ico",

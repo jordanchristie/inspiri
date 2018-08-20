@@ -5,7 +5,7 @@ import { quotesReducer } from './quotesReducer';
 
 const rootReducer = combineReducers({
     user: authReducer,
-    randomQuote: quotesReducer
+    randomQuote: quotesReducer,
 })
 
 export default rootReducer;
