@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../actions/index';
+import { saveQuoteToProfile, removeQuoteFromProfile } from '../actions/index';
 
 
 class Card extends Component {
@@ -22,7 +22,7 @@ class Card extends Component {
   }
 
   render () {
-    console.log(this.props)
+    
     const {author, quote} = this.props;
     return(
         <div className="row">
@@ -33,9 +33,9 @@ class Card extends Component {
               <p>{quote}</p>
             </div>
             <div className="card-action">
-              <a onClick={this.props.savedQuote ? this.removeQuote() : this.saveQuote()} href="">
+              <a onClick={this.props.isSaved ? this.removeQuote() : this.saveQuote()} href="">
                 <i className="fa fa-plus center"></i>
-                 {this.props.savedQuote ? ' Saved' : ' Save Quote to Collection'}
+                 {this.props.isSaved ? ' Saved' : ' Save Quote to Collection'}
               </a>
               <a href=""><i className="fa fa-facebook right"></i></a>
               <a href=""><i className="fa fa-twitter right"></i></a>
@@ -49,5 +49,8 @@ class Card extends Component {
     
 }
 
+const mapStatetoProps = ({isSaved}) => {
+  return { isSaved }
+}
 
-export default connect(null, actions)(Card);
+export default connect(mapStatetoProps, {saveQuoteToProfile, removeQuoteFromProfile})(Card);

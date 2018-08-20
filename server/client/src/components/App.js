@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+
 import LandingPage from './LandingPage';
 import Header from './Header';
 import Dashboard from './Dashboard';
@@ -25,10 +25,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({user}) => {
-  return {
-      user
-  }
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import * as actions from '../actions/index';
+import { fetchUser } from '../actions/index';
 
 import Card from './Card';
 
@@ -20,7 +20,7 @@ class Dashboard extends Component {
             </p>
         } else {  
             return user.savedQuotes.map((quote) => {
-                return <Card {...quote}  />
+                return <Card key={quote.id} {...quote} />
             })
 
         }
@@ -47,4 +47,4 @@ const mapStateToProps = ({user}) => {
     return { user }
 }
 
-export default connect(mapStateToProps, actions)(Dashboard);
+export default connect(mapStateToProps, {fetchUser})(Dashboard);
