@@ -12,28 +12,30 @@ class Dashboard extends Component {
         this.props.fetchUser()
     }
 
-    renderSavedQuotes(user) {
-        if (user.savedQuotes) {
-            user.savedQuotes.map((quote, i) => {
-                return <Card key={i} quote={quote}  />
-            })
-        } else {  
+    renderSavedQuotes = () => {
+        const {user} = this.props;
+        if (!user.savedQuotes) {
             return <p> You don't have any quotes yet.
                 <Link to="/explore">  Click here</Link> to start!
             </p>
+        } else {  
+            return user.savedQuotes.map((quote) => {
+                return <Card {...quote}  />
+            })
+
         }
     }
 
 
     render() {
-        const { user } = this.props
+        const { user } = this.props;
       return (
         <div id="dashboard-page">
             <img id="profile-pic" src={user.avatar} alt="profile pic" />
             <h3>Welcome {user.firstName}</h3> 
             <hr />
             <section>      
-            {this.renderSavedQuotes({user})}
+            {this.renderSavedQuotes()}
             </section>
         </div>
     )  
