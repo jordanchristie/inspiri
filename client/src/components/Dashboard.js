@@ -13,7 +13,7 @@ class Dashboard extends Component {
     }
 
     renderSavedQuotes = () => {
-        const {user} = this.props;
+        const { user } = this.props;
         if (!user.savedQuotes) {
             return <p> You don't have any quotes yet.
                 <Link to="/explore">  Click here</Link> to start!

@@ -7,11 +7,13 @@ module.exports = (app) => {
     
     app.post('/api/saved', (req, res) => {
         const {author, quote} = req.body;
+        console.log(req)
         
         const newQuote = User.findOne({ id: req.user.id }, (err, user) => {
             user.savedQuotes.push({
                 author,
-                quote
+                quote,
+                isSaved: true
             });
             user.save();
         });

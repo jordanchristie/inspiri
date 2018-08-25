@@ -3,7 +3,8 @@ const mongoose = require('mongoose'),
 
 const quoteSchema = new Schema({
     author: String,
-    quote: String
+    quote: String,
+    isSaved: Boolean
 });
 
 module.exports = quoteSchema;
