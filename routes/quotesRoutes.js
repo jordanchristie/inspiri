@@ -6,7 +6,6 @@ module.exports = (app) => {
     
     app.post('/api/saved', (req, res) => {
         const {author, quote} = req.body;
-        console.log(author)
         
         const newQuote = User.findOne({ id: req.user.id }, (err, user) => {
             user.savedQuotes.push({
@@ -20,11 +19,12 @@ module.exports = (app) => {
     })
 
     app.delete('/api/saved/:id', (req, res, next) => {
-        User.findOneAndRemove({ _id: req.params.id})
-            .exec()
-            .then(user => res.json(user))
 
-        User.save()
-            .then(() => res.json())
+        const user = User.findOne({ _id: req.user._id}, (err, user) => {
+            console.log(req.params.id)
+            user.savedQuotes.id(req.params.id).remove();
+
+            user.save();
+        });
     })
 }
