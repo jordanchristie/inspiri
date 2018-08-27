@@ -16,8 +16,7 @@ module.exports = (app) => {
             });
             user.save();
         });
-        
-        console.log(newQuote);
+    
     })
 
     app.delete('/api/saved/:id', (req, res, next) => {

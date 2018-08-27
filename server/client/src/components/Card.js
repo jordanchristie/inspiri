@@ -37,12 +37,12 @@ class Card extends Component {
               { isSaved ? 
                 <a onClick={this.removeQuote} href="">
                   <i className="fa fa-plus center"></i>
-                  Saved
+                  Remove Quote
                 </a> 
                 :
                 <a onClick={this.saveQuote} href="">
                   <i className="fa fa-plus center"></i>
-                  Save Quote to Collection
+                  Save Quote 
                 </a>
               } 
               <a href=""><i className="fa fa-facebook right"></i></a>
@@ -57,9 +57,6 @@ class Card extends Component {
     
 }
 
-const mapStatetoProps = ({isSaved}) => {
-  return { isSaved }
-}
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
@@ -70,4 +67,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   
     
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Card);
+export default connect(null, mapDispatchToProps)(Card);
