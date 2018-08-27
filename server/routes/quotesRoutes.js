@@ -1,13 +1,12 @@
 const express = require('express'),
       User = require('../models/User'),
-      app = express(),
-      User = require('../models/User');
+      app = express();
 
 module.exports = (app) => {
     
     app.post('/api/saved', (req, res) => {
         const {author, quote} = req.body;
-        console.log(req)
+        console.log(author)
         
         const newQuote = User.findOne({ id: req.user.id }, (err, user) => {
             user.savedQuotes.push({
@@ -18,6 +17,7 @@ module.exports = (app) => {
             user.save();
         });
         
+        console.log(newQuote);
     })
 
     app.delete('/api/saved/:id', (req, res, next) => {

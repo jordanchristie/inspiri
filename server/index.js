@@ -34,6 +34,7 @@ require('./routes/genRoutes')(app);
 require('./routes/googleRoutes')(app);
 require('./routes/facebookRoutes')(app);
 require('./routes/twitterRoutes')(app);
+require('./routes/quotesRoutes')(app);
 // const path = require('path');
 
 // app.get('*', (req, res) => {
