@@ -21,7 +21,6 @@ class Dashboard extends Component {
 
     render() {
         const { user } = this.props;
-        console.log(user.savedQuotes)
       return (
         <div id="dashboard-page">
             <img id="profile-pic" src={user.avatar} alt="profile pic" />
