@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 class Header extends Component {
 
     render() {
+        const { user } = this.props;
+        console.log(user)
         return (
             <Fragment>
                 <nav>
@@ -13,7 +15,11 @@ class Header extends Component {
                     <ul id="nav-mobile" className="right">
                         <li><Link to="/explore">Explore</Link></li>
                         <li><Link to="/dashboard">Profile</Link></li>
-                        <li><a href="/api/logout">Logout</a></li>
+                        { user ?
+                         <li><a href="/api/logout">Logout</a></li>
+                         :
+                         null
+                        }
                     </ul>
                     </div>
                 </nav>
@@ -22,10 +28,8 @@ class Header extends Component {
     }
 }
 
-const mapStateToProps = ({authorized}) => {
-    return {
-        authorized
-    }
+const mapStateToProps = ({user}) => {
+    return { user }
 }
 
 export default connect(mapStateToProps)(Header);
