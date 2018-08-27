@@ -24,7 +24,6 @@ export const fetchExploreQuotes = () => {
 }
 
 export const saveQuoteToProfile = (quote) => {
-    console.log(quote)
     return dispatch => {
         fetch('/api/saved', {
             headers: {
@@ -40,7 +39,7 @@ export const saveQuoteToProfile = (quote) => {
 
 export const removeQuoteFromProfile = (id) => {
     return dispatch => {
-        axios.delete('/api/saved')
+        axios.delete(`/api/saved/${id}`)
             .then(data => dispatch({ type: REMOVE_QUOTE_FROM_PROFILE, payload: data}))
             .catch(err => console.log(err))
     }

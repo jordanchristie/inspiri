@@ -17,8 +17,9 @@ class Card extends Component {
    
   }
   
-  removeQuote = () => {
+  removeQuote = (e) => {
     const id = this.props._id
+    console.log(id)
     this.props.removeQuoteFromProfile(id)
   }
 
@@ -61,7 +62,7 @@ class Card extends Component {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     saveQuoteToProfile: () => dispatch(saveQuoteToProfile(ownProps)),
-    removeQuoteFromProfile: () => dispatch(removeQuoteFromProfile(ownProps))
+    removeQuoteFromProfile: (id) => dispatch(removeQuoteFromProfile(id))
   }
 }
   
