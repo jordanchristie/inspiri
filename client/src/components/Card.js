@@ -25,10 +25,9 @@ class Card extends Component {
 
   render () {
     const {author, quote, isSaved} = this.props;
-    console.log(this.props)
     return(
         <div className="row">
-        <div className="col s12 ">
+        <div className="col s12">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
               <span className="card-title">{author}</span>
@@ -37,7 +36,7 @@ class Card extends Component {
             <div className="card-action">
               { isSaved ? 
                 <a onClick={this.removeQuote} href="">
-                  <i className="fa fa-plus center"></i>
+                  <i className="fa fa-times center"></i>
                   Remove Quote
                 </a> 
                 :
