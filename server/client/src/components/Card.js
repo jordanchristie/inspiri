@@ -8,7 +8,6 @@ class Card extends Component {
 
   saveQuote = (e) => {
     const {author, quote} = this.props
-    e.preventDefault()
     this.props.saveQuoteToProfile({
       author,
       quote
