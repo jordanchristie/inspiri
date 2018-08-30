@@ -11,17 +11,17 @@ class Header extends Component {
             <Fragment>
                 <nav>
                     <div className="nav-wrapper">
-                    <Link to="/" className="left brand-logo">Inspiri</Link>
-                    <ul id="nav-mobile" className="right">
-                        <li><Link to="/explore">Explore</Link></li>
-                        <li><Link to="/dashboard">Profile</Link></li>
-                        { user ?
-                         <li><a href="/api/logout">Logout</a></li>
-                         :
-                         null
-                        }
-                    </ul>
-                    </div>
+                        <Link to="/" className="left brand-logo">Inspiri</Link>
+                        { Object.keys(user).length  ?
+                            <ul id="nav-mobile" className="right">
+                                <li><Link to="/explore">Explore</Link></li>
+                                <li><Link to="/dashboard">Profile</Link></li>
+                                <li><a href="/api/logout">Logout</a></li>
+                            </ul>
+                            :
+                            null
+                            }
+                        </div>
                 </nav>
             </Fragment>
         )
