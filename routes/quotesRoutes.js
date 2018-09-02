@@ -4,6 +4,7 @@ const express = require('express'),
 
 module.exports = (app) => {
     
+    // Add Quote
     app.post('/api/saved', (req, res) => {
         const {author, quote} = req.body;
         
@@ -18,6 +19,7 @@ module.exports = (app) => {
     
     })
 
+    // Remove Quote
     app.delete('/api/saved/:id', (req, res, next) => {
 
         const user = User.findOne({ _id: req.user._id}, (err, user) => {
