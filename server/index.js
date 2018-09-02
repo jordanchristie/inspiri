@@ -15,9 +15,13 @@ mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 
 const app = express();
 
+// Body parsing & CORS middleware
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+
+// Session middleware
 
 app.use(
     cookieSession({
@@ -26,9 +30,12 @@ app.use(
     })
 );
 
+// Passport middleware
+
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Routes
 
 require('./routes/genRoutes')(app);
 require('./routes/googleRoutes')(app);
@@ -37,8 +44,10 @@ require('./routes/twitterRoutes')(app);
 require('./routes/quotesRoutes')(app);
 // const path = require('path');
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-// })
+// Send index.html for anything else
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+})
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
