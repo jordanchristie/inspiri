@@ -11,9 +11,12 @@ class Header extends Component {
             <Fragment>
                 <nav>
                     <div className="nav-wrapper">
-                        <Link to="/" className="left brand-logo">Inspiri</Link>
+                        <Link to="/" className="brand-logo">Inspiri</Link>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                            <i class="fa fa-bars fa-2x"></i>
+                        </a>
                         { Object.keys(user).length  ?
-                            <ul id="nav-mobile" className="right">
+                            <ul id="nav-mobile" className="right hide-on-med-and-down">
                                 <li><Link to="/explore">Explore</Link></li>
                                 <li><Link to="/dashboard">Profile</Link></li>
                                 <li><a href="/api/logout">Logout</a></li>
