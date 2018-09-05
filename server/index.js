@@ -5,7 +5,7 @@ const express = require('express'),
       cookieSession = require('cookie-session'),
       passport = require('passport'),
       keys = require('./config/keys'),
-      PORT = 5000;
+      PORT = process.env.PORT || 5000;
 
 require('./models/User');
 require('./services/passport');
@@ -42,7 +42,7 @@ require('./routes/googleRoutes')(app);
 require('./routes/facebookRoutes')(app);
 require('./routes/twitterRoutes')(app);
 require('./routes/quotesRoutes')(app);
-// const path = require('path');
+const path = require('path');
 
 // Send index.html for anything else
 
