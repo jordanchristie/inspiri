@@ -6,5 +6,5 @@ module.exports = {
     facebookClientSecret: process.env.facebookClientSecret,
     twitterClientId: process.env.twitterClientId,
     twitterClientSecret: process.env.twitterClientSecret,
-    cookieKey: 'irj4fby9gfv79qgcediqcncdexhqyuderfvniehrwufgq7fctrnio45wjcuhquyfcger65qgcy39141734516734135342edg'
+    cookieKey: process.env.cookieKey
 };
