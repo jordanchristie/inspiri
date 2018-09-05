@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy,
       TwitterStrategy = require('passport-twitter').Strategy,
       passport = require('passport'),
       mongoose = require('mongoose'),
-      keys = require('../config/dev'),
+      keys = require('../config/keys'),
       User = mongoose.model('user');
 
 // Serialize & Deserialize ID
@@ -52,7 +52,7 @@ passport.use(
 
 passport.use(
     new FacebookStrategy({
-          clientID: keys.facebookClientId,
+          clientID: keys.facebookClientID,
           clientSecret: keys.facebookClientSecret,
           callbackURL: '/auth/facebook/callback',
           profileFields: ['id', 'name', 'photos'],
@@ -81,7 +81,7 @@ passport.use(
 
 passport.use(
     new TwitterStrategy({
-        consumerKey: keys.twitterClientId,
+        consumerKey: keys.twitterClientID,
         consumerSecret: keys.twitterClientSecret,
         callbackURL: 'auth/twitter/callback'
     },

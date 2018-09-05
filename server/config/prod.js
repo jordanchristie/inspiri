@@ -2,9 +2,9 @@ module.exports = {
     mongoURI: process.env.mongoURI,
     googleClientID: process.env.googleClientID,
     googleClientSecret: process.env.googleClientSecret,
-    facebookClientId: process.env.facebookClientId,
+    facebookClientID: process.env.facebookClientID,
     facebookClientSecret: process.env.facebookClientSecret,
-    twitterClientId: process.env.twitterClientId,
+    twitterClientID: process.env.twitterClientID,
     twitterClientSecret: process.env.twitterClientSecret,
     cookieKey: process.env.cookieKey
 };
