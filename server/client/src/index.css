@@ -17,6 +17,12 @@ h1 {
   font-style: italic;
 }
 
+/* === SideNav === */
+.user-view img{
+  height: 100%;
+  width: 100%;
+}
+
 
 /* === CARD === */
 

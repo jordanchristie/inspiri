@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import background from '../background.jpg'
 
 class Header extends Component {
 
@@ -30,7 +31,16 @@ class Header extends Component {
                     </div>
                 </nav>
 
-                <ul class="sidenav" id="slide-out">
+                <ul className="sidenav" id="slide-out">
+                    <li>
+                        <div className="user-view">
+                            <div className="background">
+                                <img src={background} alt="background"/>
+                            </div>
+                            <img className="circle" src={user.avatar} alt="profile pic"/>
+                            <span className="white-text name">{user.fullName}</span>
+                        </div>
+                    </li>
                     <li><Link to="/explore">Explore</Link></li>
                     <li><Link to="/dashboard">Profile</Link></li>
                     <li><a href="/api/logout">Logout</a></li>
