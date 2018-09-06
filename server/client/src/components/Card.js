@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { FacebookShareButton, TwitterShareButton } from 'react-share';
 
 import { saveQuoteToProfile, removeQuoteFromProfile } from '../actions/index';
 
@@ -44,6 +45,8 @@ class Card extends Component {
                   Save Quote 
                 </a>
               } 
+              <FacebookShareButton />
+              <TwitterShareButton />
               <a href=""><i className="fa fa-facebook right"></i></a>
               <a href=""><i className="fa fa-twitter right"></i></a>
             </div>

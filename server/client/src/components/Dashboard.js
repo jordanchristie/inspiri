@@ -23,9 +23,6 @@ class Dashboard extends Component {
         const { user } = this.props;
       return (
         <div id="dashboard-page">
-            <img id="profile-pic" src={user.avatar} alt="profile pic" />
-            <h3>Welcome {user.firstName}</h3> 
-            <hr />
             <section>      
             { user.savedQuotes === undefined ?
                 <p> You don't have any quotes yet.
