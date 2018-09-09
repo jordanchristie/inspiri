@@ -14,15 +14,17 @@ class App extends Component {
       <div className="container">
         <Router>
           <div>
-          <Header />
-              <Route exact path="/" component={LandingPage} />
-              <Route path="/explore" component={ExplorePage} />
-              <Route path="/dashboard" component={Dashboard}/>
-        </div>
+            <Header />
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/explore" component={ExplorePage} />
+            <Route path="/dashboard" component={Dashboard}/>
+          </div>
         </Router>
       </div>
     );
   }
 }
+
+
 
 export default App;
