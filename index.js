@@ -45,10 +45,10 @@ require('./routes/quotesRoutes')(app);
 const path = require('path');
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(__dirname + '/app/build'));
+    app.use(express.static(__dirname + '/build'));
     
     app.get('*', (req, res) => {
-      res.sendFile(__dirname + '/app/build/index.html');
+      res.sendFile(__dirname + '/build/index.html');
     });
   }
 
