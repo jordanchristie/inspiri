@@ -11,16 +11,16 @@ import ExplorePage from './ExplorePage';
 class App extends Component {
   render() {
     return (
-      <div className="container">
-        <Router>
-          <div>
-            <Header />
+      <Router>
+        <div>
+          <Header />
+          <div className="container">
             <Route exact path="/" component={LandingPage} />
             <Route path="/explore" component={ExplorePage} />
             <Route path="/dashboard" component={Dashboard}/>
           </div>
-        </Router>
-      </div>
+        </div>
+      </Router>
     );
   }
 }
