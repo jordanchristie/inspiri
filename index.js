@@ -42,14 +42,14 @@ require('./routes/googleRoutes')(app);
 require('./routes/facebookRoutes')(app);
 require('./routes/twitterRoutes')(app);
 require('./routes/quotesRoutes')(app);
-const path = require('path');
+// const path = require('path');
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(__dirname + '/client/build'));
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static(__dirname + '/client/build'));
     
-    app.get('*', (req, res) => {
-      res.sendFile(__dirname + '/client/build/index.html');
-    });
-  }
+//     app.get('*', (req, res) => {
+//       res.sendFile(__dirname + '/client/build/index.html');
+//     });
+//   }
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
