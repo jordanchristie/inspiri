@@ -21,7 +21,6 @@ h1 {
 .user-view img{
   height: 100%;
   width: 100%;
-  object-fit: scale-down;
 }
 
 
