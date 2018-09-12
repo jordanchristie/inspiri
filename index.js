@@ -30,6 +30,11 @@ app.use(
     })
 );
 
+// Test route
+app.get('/test', (req, res) => {
+      res.send('Backend works!')
+})
+
 // Passport middleware
 
 app.use(passport.initialize());
