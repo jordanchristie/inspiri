@@ -83,7 +83,8 @@ passport.use(
     new TwitterStrategy({
         consumerKey: keys.twitterClientID,
         consumerSecret: keys.twitterClientSecret,
-        callbackURL: 'auth/twitter/callback'
+        callbackURL: 'auth/twitter/callback',
+        proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
         console.log(profile)
