@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 
 
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+//import registerServiceWorker from './registerServiceWorker';
 import App from './components/App';
 import rootReducer from './reducers/index';
 
@@ -17,4 +17,4 @@ ReactDOM.render(
         <App />
     </Provider>
     , document.getElementById('root'));
-registerServiceWorker();
+
