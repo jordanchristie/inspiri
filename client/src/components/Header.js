@@ -14,7 +14,7 @@ class Header extends Component {
                 <nav>
                     <div className="nav-wrapper">
                         <Link to="/" className="brand-logo">Inspiri</Link>
-                        { Object.keys(user).length  ?
+                        {  Object.keys(user).length ?
                             <Fragment>
                                 <a href="" data-target="slide-out" className="sidenav-trigger">
                                     <i className="fa fa-bars fa-2x"></i>
@@ -27,10 +27,11 @@ class Header extends Component {
                             </Fragment>
                             :
                             null
-                            }
+                        }
                     </div>
                 </nav>
-
+                
+                { user ?
                 <ul className="sidenav" id="slide-out">
                     <li>
                         <div className="user-view">
@@ -45,6 +46,9 @@ class Header extends Component {
                     <li><Link to="/dashboard">Profile</Link></li>
                     <li><a href="/api/logout">Logout</a></li>
                 </ul>
+                :
+                null
+                }
             </Fragment>
         )
     }

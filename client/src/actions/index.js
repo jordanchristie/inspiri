@@ -6,6 +6,7 @@ import { FETCH_USER,
          REMOVE_QUOTE_FROM_PROFILE } from '../constants/constants';
 
 export const fetchUser = (user) => {
+    console.log('hello')
     return dispatch => {
         axios.get('/api/user', {withCredentials: 'include'})
             .then(res => res.data)
