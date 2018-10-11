@@ -84,7 +84,7 @@ passport.use(
         consumerKey: keys.twitterClientID,
         consumerSecret: keys.twitterClientSecret,
         callbackURL: 'auth/twitter/callback',
-        proxy: true
+        passReqToCallback: true
     },
     async (accessToken, refreshToken, profile, done) => {
         console.log(profile)
@@ -100,7 +100,7 @@ passport.use(
             firstName: profile.name.givenName,
             savedQuotes: []
         }).save();
-
+        console.log(newUser)
         done(null, newUser);
     }
     )
