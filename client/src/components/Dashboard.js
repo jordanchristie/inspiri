@@ -2,15 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchUser } from '../actions/index';
-
 import Card from './Card';
 
 class Dashboard extends Component {
-
-    componentDidMount() {
-        this.props.fetchUser()
-    }
 
     renderSavedQuotes = () => {
         const { user } = this.props;
@@ -21,6 +15,7 @@ class Dashboard extends Component {
 
     render() {
         const { user } = this.props;
+        console.log(user)
       return (
         <div id="dashboard-page">
             <section>      
@@ -42,4 +37,4 @@ const mapStateToProps = ({user}) => {
     return { user }
 }
 
-export default connect(mapStateToProps, {fetchUser})(Dashboard);
+export default connect(mapStateToProps)(Dashboard);

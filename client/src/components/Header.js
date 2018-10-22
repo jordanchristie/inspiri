@@ -8,13 +8,12 @@ class Header extends Component {
 
     render() {
         const { user } = this.props;
-        console.log(user)
         return (
             <Fragment>
                 <nav>
                     <div className="nav-wrapper">
                         <Link to="/" className="brand-logo">Inspiri</Link>
-                        {  Object.keys(user).length ?
+                        { user ?
                             <Fragment>
                                 <a href="" data-target="slide-out" className="sidenav-trigger">
                                     <i className="fa fa-bars fa-2x"></i>
