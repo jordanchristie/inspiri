@@ -19,7 +19,6 @@ class Card extends Component {
   
   removeQuote = (e) => {
     const id = this.props._id
-    console.log(id)
     this.props.removeQuoteFromProfile(id)
   }
 

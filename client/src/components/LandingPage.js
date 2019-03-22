@@ -37,10 +37,10 @@ const Tagline = styled.h3`
     font-weight: 400;
 `
 
-const SignInButton = styled.a.attrs({
+const SignInButton = styled.a.attrs( props => ({
     className: "waves-effect waves-light btn-large",
-    href: props => `/auth/${props.type}`
-})`
+    href: `/auth/${props.type}`
+}))`
 
 `
 

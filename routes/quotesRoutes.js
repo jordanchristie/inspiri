@@ -31,7 +31,6 @@ module.exports = (app) => {
     app.delete('/api/saved/:id', (req, res, next) => {
 
         const user = User.findOne({ _id: req.user._id}, (err, user) => {
-            console.log(req.params.id)
             user.savedQuotes.id(req.params.id).remove();
 
             user.save();

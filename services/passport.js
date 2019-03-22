@@ -9,8 +9,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy,
 // Serialize & Deserialize ID
 
 passport.serializeUser((user, done) => {
-    console.log(user)
-        done(null, user._id)
+    done(null, user._id)
 });
 
 passport.deserializeUser((id, done) => {
@@ -99,7 +98,6 @@ passport.use(
             firstName: profile.name.givenName,
             savedQuotes: []
         }).save();
-        console.log(newUser)
         done(null, newUser);
     }
     )

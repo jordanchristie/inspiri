@@ -1,12 +1,10 @@
 import axios from 'axios';
 import { FETCH_USER,
          FETCH_EXPLORE_QUOTES,
-         QUOTE_URL,
          SAVE_QUOTE_TO_PROFILE,
          REMOVE_QUOTE_FROM_PROFILE } from '../constants/constants';
 
 export const fetchUser = (user) => {
-    console.log('hello')
     return dispatch => {
         axios.get('/api/user', {withCredentials: 'include'})
             .then(res => res.data)
