@@ -21,6 +21,7 @@ class ExplorePage extends Component {
                 <Card 
                     author={this.props.randomQuote.quoteAuthor}
                     quote={this.props.randomQuote.quoteText} />
+                <a href="/explore">Next Quote</a>
             </div>
         )
     }

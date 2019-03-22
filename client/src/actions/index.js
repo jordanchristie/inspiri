@@ -17,7 +17,7 @@ export const fetchUser = (user) => {
 
 export const fetchExploreQuotes = () => {
     return dispatch => {
-        axios.get(QUOTE_URL)
+        axios.get('/api/quotes')
             .then(res => res.data)
             .then(data => dispatch({type: FETCH_EXPLORE_QUOTES, payload: data}))
             .catch(err => console.log(err))

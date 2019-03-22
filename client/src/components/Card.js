@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { FacebookShareButton, TwitterShareButton } from 'react-share';
+import styled from 'styled-components';
 
 import { saveQuoteToProfile, removeQuoteFromProfile } from '../actions/index';
 
@@ -29,26 +29,27 @@ class Card extends Component {
         <div className="row">
         <div className="col s12">
           <div className="card blue-grey darken-1">
-            <div className="card-content white-text">
-              <span className="card-title">{author}</span>
-              <p>{quote}</p>
-            </div>
-            <div className="card-action">
+            <Content>
+              <Author className="card-title">{author}</Author>
+              <Quote>{quote}</Quote>
+            </Content>
+            <Actions>
               { isSaved ? 
-                <p onClick={this.removeQuote}>
+                <SaveToggle onClick={this.removeQuote}>
                   <i className="fa fa-times center"></i>
                   Remove Quote
-                </p> 
+                </SaveToggle> 
                 :
-                <p onClick={this.saveQuote}>
+                <SaveToggle onClick={this.saveQuote}>
                   <i className="fa fa-plus center"></i>
                   Save Quote 
-                </p>
+                </SaveToggle>
               } 
-  
-              <p><i className="fa fa-facebook right"></i></p>
-              <p><i className="fa fa-twitter right"></i></p>
-            </div>
+              <Social>
+                <li><i className="fa fa-facebook"></i></li>
+                <li><i className="fa fa-twitter"></i></li>
+              </Social>
+            </Actions>
           </div>
         </div>
       </div>
@@ -69,3 +70,32 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     
 
 export default connect(null, mapDispatchToProps)(Card);
+
+const Content = styled.article.attrs({
+  className: 'card-content white-text'
+})``
+
+const Author = styled.span`
+
+`
+
+const Quote = styled.p`
+
+`
+
+const Actions = styled.article.attrs({
+  className: 'card-action'
+})`
+  color: white;
+`
+
+const SaveToggle = styled.p`
+  cursor: pointer;
+`
+
+const Social = styled.ul`
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
+`
