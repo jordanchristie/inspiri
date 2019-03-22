@@ -1,7 +1,7 @@
 const express = require('express'),
       mongoose = require('mongoose'),
       bodyParser = require('body-parser'),
-      cors = require('cors'),
+      //cors = require('cors'),
       cookieSession = require('cookie-session'),
       passport = require('passport'),
       keys = require('./config/keys'),
@@ -19,7 +19,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+//app.use(cors({ credentials: true}));
 
 // Session middleware
 

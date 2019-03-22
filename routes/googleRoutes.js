@@ -9,9 +9,9 @@ module.exports = (app) => {
         scope: ['email', 'profile']
     }));
 
-    app.get('/auth/google/callback', passport.authenticate('google', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/'
-    }));
+    app.get('/auth/google/callback',
+        passport.authenticate('google', { failureRedirect: '/'}),
+        (req, res) => res.redirect('/dashboard')
+    );
 
 }

@@ -16,9 +16,9 @@ class Header extends Component {
                         <Link to="/" className="brand-logo">Inspiri</Link>
                         {  Object.keys(user).length ?
                             <Fragment>
-                                <a href="" data-target="slide-out" className="sidenav-trigger">
+                                <button data-target="slide-out" className="sidenav-trigger">
                                     <i className="fa fa-bars fa-2x"></i>
-                                </a>
+                                </button>
                                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                                     <li><Link to="/explore">Explore</Link></li>
                                     <li><Link to="/dashboard">Profile</Link></li>

@@ -6,10 +6,9 @@ module.exports = (app) => {
 
     app.get('/auth/twitter', passport.authenticate('twitter'));
 
-    app.get('/auth/twitter/callback', passport.authenticate('twitter', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/'
-    }));
-
+    app.get('/auth/twitter/callback', 
+        passport.authenticate('twitter', { failureRedirect: '/' }),
+        (req, res) => res.redirect('/dashboard')
+    );
 
 }

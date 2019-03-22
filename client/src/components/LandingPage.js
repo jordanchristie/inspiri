@@ -18,6 +18,7 @@ const LandingPage = () => {
                 <i className="fa fa-google" style={{marginRight: "10px"}}></i>
                 Login With Google
             </a>
+            <a href="/test">Test</a>
         </section>
     )
 }

@@ -35,19 +35,19 @@ class Card extends Component {
             </div>
             <div className="card-action">
               { isSaved ? 
-                <a onClick={this.removeQuote} href="">
+                <p onClick={this.removeQuote}>
                   <i className="fa fa-times center"></i>
                   Remove Quote
-                </a> 
+                </p> 
                 :
-                <a onClick={this.saveQuote} href="">
+                <p onClick={this.saveQuote}>
                   <i className="fa fa-plus center"></i>
                   Save Quote 
-                </a>
+                </p>
               } 
   
-              <a href=""><i className="fa fa-facebook right"></i></a>
-              <a href=""><i className="fa fa-twitter right"></i></a>
+              <p><i className="fa fa-facebook right"></i></p>
+              <p><i className="fa fa-twitter right"></i></p>
             </div>
           </div>
         </div>
