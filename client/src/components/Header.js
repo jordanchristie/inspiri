@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import background from "../background.jpg";
 
 const Header = ({ user }) => {
+  console.log(user);
   return (
     <>
       <nav className="nav-wrapper">

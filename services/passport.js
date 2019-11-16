@@ -88,10 +88,7 @@ passport.use(
       callbackURL: "/auth/twitter/callback",
       passReqToCallback: true
     },
-    async (req, tokenSecret, otherToken, profile, done) => {
-      console.log("TokenSecret: ", tokenSecret);
-      console.log("profile: ", profile);
-
+    async (req, accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({ id: profile.id });
 
       if (existingUser) {
@@ -100,11 +97,12 @@ passport.use(
 
       const newUser = await new User({
         id: profile.id,
-        fullName: profile.name,
-        avatar: profile.profile_image_url,
+        fullName: profile.displayName,
+        avatar: profile.photos[0].value,
         savedQuotes: []
       }).save();
-      //done(null, newUser);
+
+      done(null, newUser);
     }
   )
 );
