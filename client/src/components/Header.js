@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import background from "../background.jpg";
+import background from "../assets/images/background.jpg";
 
 const Header = ({ user }) => {
   console.log(user);

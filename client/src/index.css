@@ -1,4 +1,8 @@
-html, body, #root {
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap");
+
+html,
+body,
+#root {
   height: 100%;
   width: 100%;
 }
@@ -6,16 +10,15 @@ html, body, #root {
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
 }
 
-
 /* === SideNav === */
-.user-view img{
+.user-view img {
   height: 100%;
   width: 100%;
 }
-
 
 /* === CARD === */
 
@@ -40,8 +43,9 @@ body {
   justify-content: space-between;
 }
 
-.fa-plus, .fa-times {
-  margin-right: .5em;
+.fa-plus,
+.fa-times {
+  margin-right: 0.5em;
 }
 
 #landing-page {
@@ -50,7 +54,8 @@ body {
 }
 
 #landing-page a {
-  margin: 1.5em auto;
+  margin-top: 1.5rem;
+  width: 300px;
 }
 
 /* === DASHBOARD PAGE === */
