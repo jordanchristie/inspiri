@@ -4,56 +4,48 @@ import { connect } from "react-redux";
 import background from "../assets/images/background.jpg";
 
 const Header = ({ user }) => {
-  console.log(user);
   return (
-    <>
+    <header>
       <nav className="nav-wrapper">
         <Link to="/" className="brand-logo">
           Inspiri
         </Link>
-        {Object.keys(user).length ? (
-          <>
-            <span data-target="slide-out" className="sidenav-trigger">
-              <i className="fa fa-bars fa-2x"></i>
-            </span>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li>
-                <Link to="/explore">Explore</Link>
-              </li>
+        <span data-target="slide-out" className="sidenav-trigger">
+          <i className="fa fa-bars fa-2x"></i>
+        </span>
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <li>
+            <Link to="/quotes">Quotes</Link>
+          </li>
+          <li>
+            <Link to="/journal">Journal</Link>
+          </li>
+          <li>
+            <Link to="/mindfulness">Mindfulness</Link>
+          </li>
+          {Object.keys(user).length ? (
+            <>
               <li>
                 <Link to="/dashboard">Profile</Link>
               </li>
+
               <li>
                 <a href="/api/logout">Logout</a>
               </li>
-            </ul>
-          </>
-        ) : null}
-      </nav>
-
-      {user ? (
-        <ul className="sidenav" id="slide-out">
-          <li>
-            <div className="user-view">
-              <div className="background">
-                <img src={background} alt="background" />
-              </div>
-              <img className="circle" src={user.avatar} alt="profile pic" />
-              <span className="white-text name">{user.fullName}</span>
-            </div>
-          </li>
-          <li>
-            <Link to="/explore">Explore</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Profile</Link>
-          </li>
-          <li>
-            <a href="/api/logout">Logout</a>
-          </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <a href="/api/logout">Login</a>
+              </li>
+              <li>
+                <a href="/api/logout">Sign Up</a>
+              </li>
+            </>
+          )}
         </ul>
-      ) : null}
-    </>
+      </nav>
+    </header>
   );
 };
 

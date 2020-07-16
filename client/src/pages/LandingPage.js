@@ -30,7 +30,7 @@ const LandingPage = () => (
         Gather quotes that lift your vibration into your positive thought
         garden.
       </SectionText>
-      <Button>Explore Quotes</Button>
+      <Button href="/quotes">Explore Quotes</Button>
     </Section>
 
     <Section>
@@ -39,13 +39,13 @@ const LandingPage = () => (
         Look back on your moments of gratitude, times of struggle, and prepare
         yourself to face the day.
       </SectionText>
-      <Button>Create Your Journal</Button>
+      <Button href="/journal">Create Your Journal</Button>
     </Section>
 
     <Section>
       <SectionTitle>Breathe.</SectionTitle>
       <SectionText>Take some time out of your day to be present.</SectionText>
-      <Button>Start a Mindfullness Session</Button>
+      <Button href="/mindfulness">Start a Mindfulness Session</Button>
     </Section>
   </Splash>
 );
@@ -68,7 +68,7 @@ const Tagline = styled.h3`
   font-weight: 400;
 `;
 
-const Button = styled.button.attrs(() => ({
+const Button = styled.a.attrs(() => ({
   className: "waves-effect waves-light btn-large",
 }))``;
 

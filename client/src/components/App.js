@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import LandingPage from './LandingPage';
-import Header from './Header';
-import Dashboard from './Dashboard';
-import ExplorePage from './ExplorePage';
-
-
+import LandingPage from "../pages/LandingPage";
+import Header from "./Header";
+import Dashboard from "../pages/Dashboard";
+import ExplorePage from "../pages/ExplorePage";
+import MindfulnessPage from "../pages/MindfulnessPage";
+import JournalingPage from "../pages/JournalingPage";
 
 class App extends Component {
   render() {
@@ -16,15 +16,15 @@ class App extends Component {
           <Header />
           <div className="container">
             <Route exact path="/" component={LandingPage} />
-            <Route path="/explore" component={ExplorePage} />
-            <Route path="/dashboard" component={Dashboard}/>
+            <Route path="/quotes" component={ExplorePage} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/journal" component={JournalingPage} />
+            <Route path="/mindfulness" component={MindfulnessPage} />
           </div>
         </div>
       </Router>
     );
   }
 }
-
-
 
 export default App;
