@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 const Meditator = () => {
-  const [sessionStarted, setsessionStarted] = useState(false);
+  const [sessionStarted, setSessionStarted] = useState(false);
+
+  useEffect(() => {
+    sessionStarted
+      ? setTimeout(() => setSessionStarted(true), 5000)
+      : setSessionStarted(false);
+  }, [sessionStarted]);
+
   return (
     <>
       <MeditationWrapper className={sessionStarted ? "meditate" : null}>
         <OuterCircle>
-          <InnerCircle onClick={() => setsessionStarted(true)}>
-            <Text>{sessionStarted ? "Breathe" : "Start"}</Text>
+          <InnerCircle onClick={() => setSessionStarted(!sessionStarted)}>
+            <Text>
+              {sessionStarted ? (
+                <i className="fa fa-pause"></i>
+              ) : (
+                <i className="fa fa-play"></i>
+              )}
+            </Text>
           </InnerCircle>
         </OuterCircle>
       </MeditationWrapper>
@@ -54,6 +67,7 @@ const InnerCircle = styled.div`
   border: 5px solid magenta;
   border-radius: 50%;
   padding: 10em;
+  cursor: pointer;
 `;
 
 const Text = styled.h1``;
