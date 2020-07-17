@@ -68,7 +68,7 @@ const Tagline = styled.h3`
   font-weight: 400;
 `;
 
-const Button = styled.a.attrs(() => ({
+export const Button = styled.a.attrs(() => ({
   className: "waves-effect waves-light btn-large",
 }))``;
 
