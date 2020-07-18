@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 const Meditator = () => {
   const [sessionStarted, setSessionStarted] = useState(false);
 
-  useEffect(() => {
-    sessionStarted
-      ? setTimeout(() => setSessionStarted(true), 5000)
-      : setSessionStarted(false);
-  }, [sessionStarted]);
+  const startSession = () => {
+    return setTimeout(() => setSessionStarted(true), 5000);
+  };
+
+  const stopSession = () => {
+    return setSessionStarted(false);
+  };
 
   return (
     <>
       <MeditationWrapper className={sessionStarted ? "meditate" : null}>
         <OuterCircle>
-          <InnerCircle onClick={() => setSessionStarted(!sessionStarted)}>
+          <InnerCircle
+            onClick={() => (sessionStarted ? stopSession() : startSession())}
+          >
             <Text>
               {sessionStarted ? (
                 <i className="fa fa-pause"></i>
@@ -49,6 +53,10 @@ const breathe = keyframes`
 `;
 
 const MeditationWrapper = styled.section`
+  height: 350px;
+  width: 350px;
+  border: 1px solid red;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,13 +69,19 @@ const MeditationWrapper = styled.section`
 const OuterCircle = styled.div`
   border: 1px solid green;
   border-radius: 50%;
+  height: inherit;
+  width: inherit;
 `;
 
 const InnerCircle = styled.div`
   border: 5px solid magenta;
   border-radius: 50%;
-  padding: 10em;
   cursor: pointer;
+  height: inherit;
+  width: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Text = styled.h1``;
