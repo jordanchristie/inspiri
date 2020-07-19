@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 const Header = ({ user }) => {
   return (
     <header>
-      <nav className="nav-wrapper">
+      <NavBar>
         <Link to="/" className="brand-logo">
           Inspiri
         </Link>
 
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
+        <ul>
           <li>
             <Link to="/quotes">Quotes</Link>
           </li>
@@ -41,7 +42,7 @@ const Header = ({ user }) => {
             </>
           )}
         </ul>
-      </nav>
+      </NavBar>
     </header>
   );
 };
@@ -51,3 +52,25 @@ const mapStateToProps = ({ user }) => {
 };
 
 export default connect(mapStateToProps)(Header);
+
+const NavBar = styled.nav`
+  color: #fff;
+  background: #ee6e73;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1em;
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: inline;
+    margin: 1rem;
+  }
+`;

@@ -7,6 +7,7 @@ import Dashboard from "../pages/Dashboard";
 import QuotesPage from "../pages/ExplorePage";
 import MindfulnessPage from "../pages/MindfulnessPage";
 import JournalingPage from "../pages/JournalingPage";
+import styled from "styled-components";
 
 class App extends Component {
   render() {
@@ -14,13 +15,13 @@ class App extends Component {
       <Router>
         <div>
           <Header />
-          <div className="container">
+          <Container>
             <Route exact path="/" component={LandingPage} />
             <Route path="/quotes" component={QuotesPage} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/journal" component={JournalingPage} />
             <Route path="/mindfulness" component={MindfulnessPage} />
-          </div>
+          </Container>
         </div>
       </Router>
     );
@@ -28,3 +29,15 @@ class App extends Component {
 }
 
 export default App;
+
+const Container = styled.main`
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 90% @media screen and (min-width: 933px) {
+    width: 70%;
+  }
+
+  @media screen and (min-width: 601px) {
+    width: 85%;
+  }
+`;

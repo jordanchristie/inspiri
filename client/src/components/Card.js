@@ -1,100 +1,101 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import styled from "styled-components";
 
-import { saveQuoteToProfile, removeQuoteFromProfile } from '../actions/index';
-
+import { saveQuoteToProfile, removeQuoteFromProfile } from "../actions/index";
 
 class Card extends Component {
-
   saveQuote = (e) => {
-    const {author, quote} = this.props
+    const { author, quote } = this.props;
     this.props.saveQuoteToProfile({
       author,
-      quote
-    })
-    
-   
-  }
-  
+      quote,
+    });
+  };
+
   removeQuote = (e) => {
-    const id = this.props._id
-    this.props.removeQuoteFromProfile(id)
-  }
+    const id = this.props._id;
+    this.props.removeQuoteFromProfile(id);
+  };
 
-  render () {
-    const {author, quote, isSaved} = this.props;
-    return(
-        <div className="row">
-        <div className="col s12">
-          <div className="card blue-grey darken-1">
-            <Content>
-              <Author className="card-title">{author}</Author>
-              <Quote>{quote}</Quote>
-            </Content>
-            <Actions>
-              { isSaved ? 
-                <SaveToggle onClick={this.removeQuote}>
-                  <i className="fa fa-times center"></i>
-                  Remove Quote
-                </SaveToggle> 
-                :
-                <SaveToggle onClick={this.saveQuote}>
-                  <i className="fa fa-plus center"></i>
-                  Save Quote 
-                </SaveToggle>
-              } 
-              <Social>
-                <li><i className="fa fa-facebook"></i></li>
-                <li><i className="fa fa-twitter"></i></li>
-              </Social>
-            </Actions>
-          </div>
-        </div>
-      </div>
-              
-    )
+  render() {
+    const { author, quote, isSaved } = this.props;
+    return (
+      <CardWrapper>
+        <Content>
+          <Author>{author}</Author>
+          <Quote>{quote}</Quote>
+        </Content>
+        <Actions>
+          {isSaved ? (
+            <SaveToggle onClick={this.removeQuote}>
+              <i className="fa fa-times center"></i>
+              Remove Quote
+            </SaveToggle>
+          ) : (
+            <SaveToggle onClick={this.saveQuote}>
+              <i className="fa fa-plus center"></i>
+              Save Quote
+            </SaveToggle>
+          )}
+          <Social>
+            <li>
+              <i className="fa fa-facebook"></i>
+            </li>
+            <li>
+              <i className="fa fa-twitter"></i>
+            </li>
+          </Social>
+        </Actions>
+      </CardWrapper>
+    );
   }
-    
 }
-
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     saveQuoteToProfile: () => dispatch(saveQuoteToProfile(ownProps)),
-    removeQuoteFromProfile: (id) => dispatch(removeQuoteFromProfile(id))
-  }
-}
-  
-    
+    removeQuoteFromProfile: (id) => dispatch(removeQuoteFromProfile(id)),
+  };
+};
 
 export default connect(null, mapDispatchToProps)(Card);
 
-const Content = styled.article.attrs({
-  className: 'card-content white-text'
-})``
+const CardWrapper = styled.section`
+  background: #455a64;
+  color: #fff;
+  padding: 1.5rem;
+`;
+
+const Content = styled.article``;
 
 const Author = styled.span`
-
-`
+  font-size: 1.5rem
+  font-style: italic;
+  font-weight: 300;
+`;
 
 const Quote = styled.p`
+  font-size: 2rem;
+`;
 
-`
-
-const Actions = styled.article.attrs({
-  className: 'card-action'
-})`
-  color: white;
-`
+const Actions = styled.article`
+  border-top: 1px solid rgba(160, 160, 160, 0.2);
+  display: flex;
+  justify-content: space-between;
+`;
 
 const SaveToggle = styled.p`
   cursor: pointer;
-`
+`;
 
 const Social = styled.ul`
-  width: 30%;
-  display: flex;
-  justify-content: space-evenly;
+  width: 10%;
   cursor: pointer;
-`
+
+  li {
+    display: inline;
+    margin: 1em;
+    font-size: 1.25rem;
+  }
+`;

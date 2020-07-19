@@ -68,9 +68,17 @@ const Tagline = styled.h3`
   font-weight: 400;
 `;
 
-export const Button = styled.a.attrs(() => ({
-  className: "waves-effect waves-light btn-large",
-}))``;
+export const Button = styled.a`
+  height: 54px;
+  color: white;
+  background: #00796b;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  &:hover {
+    background: #2bbbad;
+  }
+`;
 
 const SignInButton = styled.a.attrs((props) => ({
   href: `/auth/${props.type}`,
