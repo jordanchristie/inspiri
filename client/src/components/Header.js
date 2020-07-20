@@ -7,9 +7,9 @@ const Header = ({ user }) => {
   return (
     <header>
       <NavBar>
-        <Link to="/" className="brand-logo">
+        <NavTitle to="/" className="brand-logo">
           Inspiri
-        </Link>
+        </NavTitle>
 
         <ul>
           <li>
@@ -54,15 +54,15 @@ const mapStateToProps = ({ user }) => {
 export default connect(mapStateToProps)(Header);
 
 const NavBar = styled.nav`
-  color: #fff;
   background: #ee6e73;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 1em;
+  align-items: center;
 
   a {
     text-decoration: none;
+    color: #fff;
   }
 
   ul {
@@ -73,4 +73,8 @@ const NavBar = styled.nav`
     display: inline;
     margin: 1rem;
   }
+`;
+
+const NavTitle = styled(Link)`
+  font-size: 3rem;
 `;

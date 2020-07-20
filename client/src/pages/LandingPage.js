@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as SVG } from "../assets/images/Lotus-Flower.svg";
 
 const LandingPage = () => (
-  <Splash id="landing-page">
+  <>
     <HeroSection>
       <div style={{ width: "45%" }}>
         <Title>Inspiri</Title>
@@ -47,17 +47,16 @@ const LandingPage = () => (
       <SectionText>Take some time out of your day to be present.</SectionText>
       <Button href="/mindfulness">Start a Mindfulness Session</Button>
     </Section>
-  </Splash>
+  </>
 );
 
 export default LandingPage;
-
-const Splash = styled.main``;
 
 const HeroSection = styled.section`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  align-items: center;
   height: 90vh;
 `;
 
@@ -83,7 +82,9 @@ export const Button = styled.a`
 const SignInButton = styled.a.attrs((props) => ({
   href: `/auth/${props.type}`,
   style: { display: "block" },
-}))``;
+}))`
+  margin-top: 2em;
+`;
 
 const SignInType = styled.i`
   margin-right: 10px;

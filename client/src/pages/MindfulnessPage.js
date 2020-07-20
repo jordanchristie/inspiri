@@ -9,12 +9,12 @@ const MindfulnessPage = () => {
     <div>
       <h1>Mindful</h1>
       <Meditator />
-      <TimeInput
+      {/* <TimeInput
         type="number"
         name="time"
         value={timer}
         onChange={(e) => setTimer(e.target.value)}
-      />
+      /> */}
     </div>
   );
 };
@@ -26,4 +26,7 @@ const TimeInput = styled.input`
   text-align: center;
   font-size: 3rem;
   margin-bottom: 10px;
+  outline: 0;
+  border: 0;
+  border-bottom: 1px solid magenta;
 `;

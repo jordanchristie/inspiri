@@ -83,10 +83,15 @@ const Actions = styled.article`
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const SaveToggle = styled.p`
   cursor: pointer;
+
+  i.fa-plus {
+    margin-right: 0.5em;
+  }
 `;
 
 const Social = styled.ul`

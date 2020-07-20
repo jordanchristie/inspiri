@@ -3,29 +3,29 @@ import styled, { keyframes } from "styled-components";
 
 const Meditator = () => {
   const [sessionStarted, setSessionStarted] = useState(false);
+  const [text, setText] = useState("Start");
 
   const startSession = () => {
-    return setTimeout(() => setSessionStarted(true), 5000);
+    setText("Bring awareness to your breath");
+    return setTimeout(() => {
+      setSessionStarted(true);
+    }, 5000);
   };
 
-  const stopSession = () => {
+  const resetSession = () => {
+    setText("Start");
     return setSessionStarted(false);
   };
 
   return (
     <>
-      <MeditationWrapper className={sessionStarted ? "meditate" : null}>
+      <MeditationWrapper>
         <OuterCircle>
           <InnerCircle
-            onClick={() => (sessionStarted ? stopSession() : startSession())}
+            className={sessionStarted ? "meditate" : null}
+            onClick={() => (sessionStarted ? resetSession() : startSession())}
           >
-            <Text>
-              {sessionStarted ? (
-                <i className="fa fa-pause"></i>
-              ) : (
-                <i className="fa fa-play"></i>
-              )}
-            </Text>
+            <Text>{text}</Text>
           </InnerCircle>
         </OuterCircle>
       </MeditationWrapper>
@@ -41,40 +41,36 @@ const breathe = keyframes`
     }
 
     30% {
-        transform: scale(1.4);
-    } 
+        transform: scale(1.2);
+        background: red;
+    }
 
     60% {
-        transform: scale(1.4);
+        transform: scale(1.2);
+        background: red;
     }
     100% {
         transform: scale(1);
+        background: blue;
     }
 `;
 
 const MeditationWrapper = styled.section`
   height: 350px;
   width: 350px;
-  border: 1px solid red;
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &.meditate {
-    animation: ${breathe} 10s linear infinite;
-  }
 `;
 
 const OuterCircle = styled.div`
-  border: 1px solid green;
   border-radius: 50%;
   height: inherit;
   width: inherit;
 `;
 
 const InnerCircle = styled.div`
-  border: 5px solid magenta;
   border-radius: 50%;
   cursor: pointer;
   height: inherit;
@@ -82,6 +78,14 @@ const InnerCircle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background: blue;
+
+  &.meditate {
+    animation: ${breathe} 10s linear infinite;
+  }
 `;
 
-const Text = styled.h1``;
+const Text = styled.h1`
+  text-align: center;
+  color: #fff;
+`;

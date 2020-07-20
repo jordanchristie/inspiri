@@ -8,12 +8,14 @@ import QuotesPage from "../pages/ExplorePage";
 import MindfulnessPage from "../pages/MindfulnessPage";
 import JournalingPage from "../pages/JournalingPage";
 import styled from "styled-components";
+import { GlobalStyle } from "../utils/styles/global";
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div>
+          <GlobalStyle />
           <Header />
           <Container>
             <Route exact path="/" component={LandingPage} />

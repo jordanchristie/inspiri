@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap");
 
 html,
@@ -12,51 +15,42 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
+  font-size: 16px;
 }
 
-/* === SideNav === */
-.user-view img {
-  height: 100%;
-  width: 100%;
+h1 {
+    font-size: 2.5rem;
 }
 
-/* === CARD === */
-
-.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+h2 {
+    font-size: 2rem;
 }
 
-.card-content {
-  font-size: 2em;
+h3 {
+    font-size: 1.75rem;
 }
 
-.card-title {
-  font-style: italic;
-  font-weight: 400;
+h4 {
+    font-size: 1.5rem;
 }
 
-.card-action {
-  font-size: 1.5em;
-  display: flex;
-  justify-content: space-between;
+h5 {
+    font-size: 1.25rem;
 }
 
-.fa-plus,
-.fa-times {
-  margin-right: 0.5em;
+h6 {
+    font-size: 1rem;
 }
 
-#landing-page {
-  display: flex;
-  flex-flow: column;
+a {
+    text-decoration: none;
 }
 
-#landing-page a {
-  margin-top: 1.5rem;
-  width: 300px;
+ul {
+    list-style: none;
 }
+
+
 
 /* === DASHBOARD PAGE === */
 
@@ -89,3 +83,4 @@ body {
     height: 100%;
   }
 }
+`;
