@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Meditator from "../components/Meditator";
 import styled from "styled-components";
+import useTimer from "../utils/hooks/useTimer";
 
 const MindfulnessPage = () => {
-  const [timer, setTimer] = useState(5);
-  console.log(timer);
+  const { totalTime, setTimer } = useTimer(5);
   return (
     <div>
       <h1>Mindful</h1>
@@ -12,7 +12,7 @@ const MindfulnessPage = () => {
       {/* <TimeInput
         type="number"
         name="time"
-        value={timer}
+        value={totalTime}
         onChange={(e) => setTimer(e.target.value)}
       /> */}
     </div>
