@@ -1,7 +1,7 @@
-const express = require("express"),
-  User = require("../models/User"),
-  fetch = require("node-fetch");
-app = express();
+const express = require("express");
+const User = require("../models/User");
+const fetch = require("node-fetch");
+const app = express();
 
 module.exports = (app) => {
   app.get("/api/quotes", async (req, res) => {

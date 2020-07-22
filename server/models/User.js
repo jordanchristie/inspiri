@@ -1,14 +1,16 @@
-const mongoose = require("mongoose"),
-  { Schema } = mongoose,
-  quoteSchema = require("./Quote");
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+const journalSchema = require("./Journal");
+const quoteSchema = require("./Quote");
 
 const userSchema = new Schema(
   {
-    id: Number,
-    fullName: String,
-    firstName: String,
-    avatar: String,
+    id: { type: Number, required: true },
+    fullName: { type: String },
+    firstName: { type: String },
+    avatarUrl: { type: String },
     savedQuotes: [quoteSchema],
+    journalEntries: [journalSchema],
   },
   { collection: "users" }
 );

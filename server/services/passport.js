@@ -1,10 +1,10 @@
-const GoogleStrategy = require("passport-google-oauth20").Strategy,
-  FacebookStrategy = require("passport-facebook").Strategy,
-  TwitterStrategy = require("passport-twitter").Strategy,
-  passport = require("passport"),
-  mongoose = require("mongoose"),
-  keys = require("../config/keys"),
-  User = mongoose.model("user");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
+const TwitterStrategy = require("passport-twitter").Strategy;
+const passport = require("passport");
+const mongoose = require("mongoose");
+const keys = require("../config/keys");
+const User = mongoose.model("user");
 
 // Serialize & Deserialize ID
 
@@ -41,7 +41,7 @@ passport.use(
         id: profile.id,
         fullName: profile.displayName,
         firstName: profile.name.givenName,
-        avatar: profile._json.image.url,
+        avatarUrl: profile._json.image.url,
         savedQuotes: [],
       }).save();
       done(null, newUser);
@@ -70,7 +70,7 @@ passport.use(
 //         id: profile.id,
 //         fullName: profile.displayName,
 //         firstName: profile.name.givenName,
-//         avatar: profile.photos[0].value,
+//         avatarUrl: profile.photos[0].value,
 //         savedQuotes: []
 //       }).save();
 //       done(null, newUser);
@@ -80,29 +80,30 @@ passport.use(
 
 // Twitter Strategy
 
-// passport.use(
-//   new TwitterStrategy(
-//     {
-//       consumerKey: keys.twitterClientID,
-//       consumerSecret: keys.twitterClientSecret,
-//       callbackURL: "/auth/twitter/callback",
-//       passReqToCallback: true
-//     },
-//     async (req, accessToken, refreshToken, profile, done) => {
-//       const existingUser = await User.findOne({ id: profile.id });
+passport.use(
+  new TwitterStrategy(
+    {
+      consumerKey: keys.twitterClientID,
+      consumerSecret: keys.twitterClientSecret,
+      callbackURL: "/auth/twitter/callback",
+      passReqToCallback: true,
+    },
+    async (req, accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ id: profile.id });
 
-//       if (existingUser) {
-//         done(null, existingUser);
-//       }
+      if (existingUser) {
+        done(null, existingUser);
+      }
 
-//       const newUser = await new User({
-//         id: profile.id,
-//         fullName: profile.displayName,
-//         avatar: profile.photos[0].value,
-//         savedQuotes: []
-//       }).save();
+      const newUser = await new User({
+        id: profile.id,
+        fullName: profile.name,
+        avatarUrl: profile.profile_image_url,
+        savedQuotes: [],
+        journalEntries: [],
+      }).save();
 
-//       done(null, newUser);
-//     }
-//   )
-// );
+      done(null, newUser);
+    }
+  )
+);

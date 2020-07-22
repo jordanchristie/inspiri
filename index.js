@@ -1,11 +1,11 @@
-const express = require("express"),
-  mongoose = require("mongoose"),
-  bodyParser = require("body-parser"),
-  cors = require("cors"),
-  cookieSession = require("cookie-session"),
-  passport = require("passport"),
-  keys = require("./server/config/keys"),
-  PORT = process.env.PORT || 5000;
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+const keys = require("./server/config/keys");
+const PORT = process.env.PORT || 5000;
 
 require("./server/models/User");
 require("./server/services/passport");
