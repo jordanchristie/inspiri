@@ -18,6 +18,7 @@ class QuotesPage extends Component {
     return (
       <div>
         <h1>Explore</h1>
+
         <Card author={randomQuote.quoteAuthor} quote={randomQuote.quoteText} />
 
         <NextQuote href="/quotes">

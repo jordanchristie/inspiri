@@ -4,17 +4,14 @@ import styled from "styled-components";
 import useTimer from "../utils/hooks/useTimer";
 
 const MindfulnessPage = () => {
-  const { totalTime, setTimer } = useTimer(5);
+  const { time, setTimer, startTimer } = useTimer(5);
+  console.log(time);
   return (
     <div>
       <h1>Mindful</h1>
       <Meditator />
-      {/* <TimeInput
-        type="number"
-        name="time"
-        value={totalTime}
-        onChange={(e) => setTimer(e.target.value)}
-      /> */}
+      {/* <TimeInput type="number" name="time" value={time} />
+      <h1 onClick={() => startTimer()}>{time}</h1> */}
     </div>
   );
 };

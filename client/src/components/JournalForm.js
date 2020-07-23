@@ -1,16 +1,22 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import { Button } from "../pages/LandingPage";
+import { addJournalEntry } from "../actions";
 
 const JournalForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     const newEntry = {
       title,
       content,
     };
+
+    addJournalEntry(newEntry);
   };
   return (
     <form style={{ margin: "5em auto" }} onSubmit={(e) => handleSubmit(e)}>
@@ -30,22 +36,30 @@ const JournalForm = () => {
         ></JournalContent>
       </div>
 
-      <Button>Submit</Button>
+      <Button as="button" type="submit">
+        Submit
+      </Button>
     </form>
   );
 };
 
-export default JournalForm;
+const mapStateToProps = ({ journalEntry }) => {
+  return { journalEntry };
+};
+
+export default connect(mapStateToProps, { addJournalEntry })(JournalForm);
 
 const JournalTitle = styled.input`
-  margin: 3em auto;
+  font-size: 1.5rem;
+  margin: 1.25em auto;
   width: 100%;
   border: none;
   border-bottom: 1px solid #333;
 `;
 
 const JournalContent = styled.textarea`
-  margin: 3em auto;
+  font-size: 1.5rem;
+  margin: 1.25em auto;
   width: 100%;
   border: none;
   border-bottom: 1px solid #333;

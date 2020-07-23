@@ -4,6 +4,7 @@ import {
   FETCH_EXPLORE_QUOTES,
   SAVE_QUOTE_TO_PROFILE,
   REMOVE_QUOTE_FROM_PROFILE,
+  ADD_JOURNAL_ENTRY,
 } from "../constants/constants";
 
 export const fetchUser = (user) => {
@@ -48,6 +49,10 @@ export const removeQuoteFromProfile = (id) => {
 
 export const addJournalEntry = (entry) => {
   return (dispatch) => {
-    axios.post(`/api/journal/add`);
+    axios
+      .post(`/api/journal/add`, entry)
+      .then((res) => res.data)
+      .then((data) => dispatch({ type: ADD_JOURNAL_ENTRY, payload: data }))
+      .catch((err) => console.log(err));
   };
 };

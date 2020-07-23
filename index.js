@@ -44,6 +44,7 @@ require("./server/routes/googleRoutes")(app);
 require("./server/routes/facebookRoutes")(app);
 require("./server/routes/twitterRoutes")(app);
 require("./server/routes/quotesRoutes")(app);
+require("./server/routes/journalRoutes")(app);
 
 // Serve static assets
 if (process.env.NODE_ENV === "production") {

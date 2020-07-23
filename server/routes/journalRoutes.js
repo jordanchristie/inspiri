@@ -1,11 +1,10 @@
 const express = require("express");
 const User = require("../models/User");
-const fetch = require("node-fetch");
 const app = express();
 
 module.exports = (app) => {
-  app.get(`/api/journal`, (req, res) => {
-    const allEntries = User.findOne({ id: req.user.id }, (err, user) => {
+  app.get(`/api/journal`, async (req, res) => {
+    const allEntries = await User.findOne({ id: req.user.id }, (err, user) => {
       try {
         res.send(user.journalEntries);
       } catch (err) {
@@ -15,6 +14,7 @@ module.exports = (app) => {
   });
 
   app.post(`/api/journal/add`, (req, res) => {
+    console.log(req);
     const { title, content } = req.body;
 
     const newJournalEntry = User.findOne({ id: req.body.id }, (err, user) => {

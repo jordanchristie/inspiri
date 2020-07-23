@@ -10,11 +10,11 @@ module.exports = (app) => {
         "https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json&lang=en"
       );
       const json = await result.json();
+
+      res.send(json);
     } catch (error) {
       res.status(500).json("Something went wrong while saving this quote.");
     }
-
-    res.send(json);
   });
 
   // Add Quote

@@ -67,6 +67,7 @@ const NavBar = styled.nav`
 
   ul {
     list-style: none;
+    margin-right: 3em;
   }
 
   li {
