@@ -2,8 +2,8 @@ const express = require("express"),
   passport = require("passport"),
   app = express();
 
-module.exports = app => {
-  app.use(function(req, res, next) {
+module.exports = (app) => {
+  app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
       "Access-Control-Allow-Headers",
@@ -13,6 +13,7 @@ module.exports = app => {
   });
 
   app.get("/api/user", (req, res) => {
+    console.log(req.user);
     res.send(req.user);
   });
 

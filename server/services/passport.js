@@ -43,6 +43,7 @@ passport.use(
         firstName: profile.name.givenName,
         avatarUrl: profile._json.image.url,
         savedQuotes: [],
+        journalEntries: [],
       }).save();
       done(null, newUser);
     }

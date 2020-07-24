@@ -9,12 +9,13 @@ import MindfulnessPage from "../pages/MindfulnessPage";
 import JournalingPage from "../pages/JournalingPage";
 import styled from "styled-components";
 import { GlobalStyle } from "../utils/styles/global";
+import { UserContextProvider } from "../context/userContext";
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <UserContextProvider>
           <GlobalStyle />
           <Header />
           <Container>
@@ -24,7 +25,7 @@ class App extends Component {
             <Route path="/journal" component={JournalingPage} />
             <Route path="/mindfulness" component={MindfulnessPage} />
           </Container>
-        </div>
+        </UserContextProvider>
       </Router>
     );
   }

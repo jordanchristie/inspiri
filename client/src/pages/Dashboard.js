@@ -1,45 +1,38 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useEffect, useContext } from "react";
+import { UserContext } from "../context/userContext";
 import { Link } from "react-router-dom";
-
-import { fetchUser } from "../actions/index";
 
 import Card from "../components/Card";
 
-class Dashboard extends Component {
-  componentDidMount() {
-    this.props.fetchUser();
-  }
+const Dashboard = () => {
+  const { user, fetchUser } = useContext(UserContext);
+  console.log(user.savedQuotes);
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
-  renderSavedQuotes = () => {
-    const { user } = this.props;
+  const renderSavedQuotes = () => {
     return user.savedQuotes.reverse().map((quote, i) => {
       return <Card key={i} {...quote} />;
     });
   };
 
-  render() {
-    const { user } = this.props;
-    return (
-      <div id="dashboard-page">
-        <section>
-          {user.savedQuotes === undefined ? (
-            <p>
-              {" "}
-              You don't have any quotes yet.
-              <Link to="/explore"> Click here</Link> to start!
-            </p>
-          ) : (
-            this.renderSavedQuotes()
-          )}
-        </section>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = ({ user }) => {
-  return { user };
+  return (
+    <div id="dashboard-page">
+      <section>
+        <h1>User data goes here</h1>
+        {user.savedQuotes == undefined ? (
+          <p>
+            {" "}
+            You don't have any quotes yet.
+            <Link to="/explore"> Click here</Link> to start!
+          </p>
+        ) : (
+          renderSavedQuotes()
+        )}
+      </section>
+    </div>
+  );
 };
 
-export default connect(mapStateToProps, { fetchUser })(Dashboard);
+export default Dashboard;

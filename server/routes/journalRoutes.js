@@ -13,7 +13,7 @@ module.exports = (app) => {
     });
   });
 
-  app.post(`/api/journal/add`, (req, res) => {
+  app.post(`/api/journal`, (req, res) => {
     console.log(req);
     const { title, content } = req.body;
 
