@@ -24,7 +24,7 @@ const Header = () => {
           <li>
             <Link to="/mindfulness">Mindfulness</Link>
           </li>
-          {Object.keys(user).length ? (
+          {user !== undefined ? (
             <>
               <li>
                 <Link to="/dashboard">Profile</Link>
@@ -50,11 +50,7 @@ const Header = () => {
   );
 };
 
-const mapStateToProps = ({ user }) => {
-  return { user };
-};
-
-export default connect(mapStateToProps)(Header);
+export default Header;
 
 const NavBar = styled.nav`
   background: #ee6e73;

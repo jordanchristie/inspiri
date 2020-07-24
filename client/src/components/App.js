@@ -11,25 +11,28 @@ import styled from "styled-components";
 import { GlobalStyle } from "../utils/styles/global";
 import { UserContextProvider } from "../context/userContext";
 import { QuoteContextProvider } from "../context/quoteContext";
+import { JournalContextProvider } from "../context/journalContext";
 
 class App extends Component {
   render() {
     return (
       <UserContextProvider>
         <QuoteContextProvider>
-          <Router>
-            <>
-              <GlobalStyle />
-              <Header />
-              <Container>
-                <Route exact path="/" component={LandingPage} />
-                <Route path="/quotes" component={QuotesPage} />
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/journal" component={JournalingPage} />
-                <Route path="/mindfulness" component={MindfulnessPage} />
-              </Container>
-            </>
-          </Router>
+          <JournalContextProvider>
+            <Router>
+              <>
+                <GlobalStyle />
+                <Header />
+                <Container>
+                  <Route exact path="/" component={LandingPage} />
+                  <Route path="/quotes" component={QuotesPage} />
+                  <Route path="/dashboard" component={Dashboard} />
+                  <Route path="/journal" component={JournalingPage} />
+                  <Route path="/mindfulness" component={MindfulnessPage} />
+                </Container>
+              </>
+            </Router>
+          </JournalContextProvider>
         </QuoteContextProvider>
       </UserContextProvider>
     );

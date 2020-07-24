@@ -7,12 +7,13 @@ export const JournalContextProvider = ({ children }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const addJournalEntry = async (entry) => {
+  async function addJournalEntry(entry) {
+    console.log(entry);
     const res = await axios.post("/api/journal", entry);
-    const journalEntry = res.data;
+    const journalEntry = await res.data;
 
     return journalEntry;
-  };
+  }
 
   return (
     <JournalContext.Provider

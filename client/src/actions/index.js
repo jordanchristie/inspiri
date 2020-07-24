@@ -1,33 +1,9 @@
 import axios from "axios";
 import {
-  FETCH_USER,
-  FETCH_EXPLORE_QUOTES,
   SAVE_QUOTE_TO_PROFILE,
   REMOVE_QUOTE_FROM_PROFILE,
   ADD_JOURNAL_ENTRY,
 } from "../constants/constants";
-
-export const fetchUser = (user) => {
-  return async (dispatch) => {
-    const res = axios.get("/api/user", { withCredentials: "include" });
-    const user = res.data;
-
-    dispatch({ type: FETCH_USER, payload: user }).catch((err) =>
-      console.log(err)
-    );
-  };
-};
-
-export const fetchExploreQuotes = () => {
-  return async (dispatch) => {
-    const res = await axios.get("/api/quotes");
-    const quote = res.data;
-
-    dispatch({ type: FETCH_EXPLORE_QUOTES, payload: quote }).catch((err) =>
-      console.log(err)
-    );
-  };
-};
 
 export const saveQuoteToProfile = (quote) => {
   return async (dispatch) => {

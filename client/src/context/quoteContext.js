@@ -8,13 +8,34 @@ export const QuoteContextProvider = ({ children }) => {
 
   async function fetchRandomQuote() {
     const res = await axios.get("/api/quotes");
-    const quote = res.data;
+    const quote = await res.data;
 
-    return setRandomQuote(quote);
+    setRandomQuote({ ...quote, quoteSaved: false });
+  }
+
+  async function saveQuoteToProfile(quote) {
+    const res = await axios.post("/api/quote/add", quote);
+    const { data } = res;
+
+    return { ...data, quoteSaved: true, appMessage: "Message Saved!" };
+  }
+
+  async function removeQuoteFromProfile(id) {
+    const res = await axios.delete(`/api/quote/delete/${id}`);
+    const { data } = res;
+
+    return { ...data, appMessage: "Message Deleted." };
   }
 
   return (
-    <QuoteContext.Provider value={{ randomQuote, fetchRandomQuote }}>
+    <QuoteContext.Provider
+      value={{
+        randomQuote,
+        fetchRandomQuote,
+        saveQuoteToProfile,
+        removeQuoteFromProfile,
+      }}
+    >
       {children}
     </QuoteContext.Provider>
   );

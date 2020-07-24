@@ -1,65 +1,46 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useContext } from "react";
+import { QuoteContext } from "../context/quoteContext";
 import styled from "styled-components";
 
-import { saveQuoteToProfile, removeQuoteFromProfile } from "../actions/index";
-
-class Card extends Component {
-  saveQuote = (e) => {
-    const { author, quote } = this.props;
-    this.props.saveQuoteToProfile({
-      author,
-      quote,
-    });
-  };
-
-  removeQuote = (e) => {
-    const id = this.props._id;
-    this.props.removeQuoteFromProfile(id);
-  };
-
-  render() {
-    const { author, quote, isSaved } = this.props;
-    return (
-      <CardWrapper>
-        <Content>
-          <Author>{author}</Author>
-          <Quote>{quote}</Quote>
-        </Content>
-        <Actions>
-          {isSaved ? (
-            <SaveToggle onClick={this.removeQuote}>
-              <i className="fa fa-times center"></i>
-              Remove Quote
-            </SaveToggle>
-          ) : (
-            <SaveToggle onClick={this.saveQuote}>
-              <i className="fa fa-plus center"></i>
-              Save Quote
-            </SaveToggle>
-          )}
-          <Social>
-            <li>
-              <i className="fa fa-facebook"></i>
-            </li>
-            <li>
-              <i className="fa fa-twitter"></i>
-            </li>
-          </Social>
-        </Actions>
-      </CardWrapper>
-    );
-  }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    saveQuoteToProfile: () => dispatch(saveQuoteToProfile(ownProps)),
-    removeQuoteFromProfile: (id) => dispatch(removeQuoteFromProfile(id)),
-  };
+const Card = ({ quote }) => {
+  const { quoteAuthor, quoteText, quoteSaved, _id } = quote;
+  const { saveQuoteToProfile, removeQuoteFromProfile } = useContext(
+    QuoteContext
+  );
+  return (
+    <CardWrapper>
+      <Content>
+        <Author>{quoteAuthor}</Author>
+        <Quote>{quoteText}</Quote>
+      </Content>
+      <Actions>
+        {quoteSaved ? (
+          <SaveToggle onClick={() => removeQuoteFromProfile(_id)}>
+            <i className="fa fa-times center"></i>
+            Remove Quote
+          </SaveToggle>
+        ) : (
+          <SaveToggle
+            onClick={() => saveQuoteToProfile({ quoteAuthor, quoteText })}
+          >
+            <i className="fa fa-plus center"></i>
+            Save Quote
+          </SaveToggle>
+        )}
+        <Social>
+          <li>
+            <i className="fa fa-facebook"></i>
+          </li>
+          <li>
+            <i className="fa fa-twitter"></i>
+          </li>
+        </Social>
+      </Actions>
+    </CardWrapper>
+  );
 };
 
-export default connect(null, mapDispatchToProps)(Card);
+export default Card;
 
 const CardWrapper = styled.section`
   background: #455a64;

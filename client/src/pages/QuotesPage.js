@@ -8,16 +8,16 @@ const QuotesPage = () => {
   const { randomQuote, fetchRandomQuote } = useContext(QuoteContext);
 
   useEffect(() => {
-    return fetchRandomQuote();
+    fetchRandomQuote();
   }, []);
+
+  console.log(randomQuote);
 
   return (
     <QuoteContextProvider>
       <h1>Explore</h1>
 
-      {randomQuote && (
-        <Card author={randomQuote.quoteAuthor} quote={randomQuote.quoteText} />
-      )}
+      {randomQuote && <Card quote={randomQuote} />}
 
       <NextQuote onClick={() => fetchRandomQuote()}>
         <i className="fa fa-arrow-right"></i>

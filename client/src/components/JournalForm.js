@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Button } from "../pages/LandingPage";
-import { addJournalEntry } from "../actions";
+import { JournalContext } from "../context/journalContext";
 
 const JournalForm = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const { title, setTitle, content, setContent, addJournalEntry } = useContext(
+    JournalContext
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,11 +43,7 @@ const JournalForm = () => {
   );
 };
 
-const mapStateToProps = ({ journalEntry }) => {
-  return { journalEntry };
-};
-
-export default connect(mapStateToProps, { addJournalEntry })(JournalForm);
+export default JournalForm;
 
 const JournalTitle = styled.input`
   font-size: 1.5rem;
