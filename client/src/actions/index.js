@@ -31,7 +31,7 @@ export const fetchExploreQuotes = () => {
 
 export const saveQuoteToProfile = (quote) => {
   return async (dispatch) => {
-    const res = await axios.post("/api/quotes/add", quote);
+    const res = await axios.post("/api/quotes/add");
     const quote = res.data;
 
     dispatch({ type: SAVE_QUOTE_TO_PROFILE, payload: quote }).catch((err) =>
@@ -53,7 +53,7 @@ export const removeQuoteFromProfile = (id) => {
 
 export const addJournalEntry = (entry) => {
   return async (dispatch) => {
-    const res = await axios.post("/api/journal", entry);
+    const res = await axios.post("/api/journal");
     const entry = res.data;
 
     return dispatch({ type: ADD_JOURNAL_ENTRY, payload: entry }).catch(
