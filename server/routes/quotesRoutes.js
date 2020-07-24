@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/User");
 const fetch = require("node-fetch");
+const checkUser = require("../utils/checkUser");
 const app = express();
 
 module.exports = (app) => {
@@ -13,12 +14,13 @@ module.exports = (app) => {
 
       res.send(json);
     } catch (error) {
-      res.status(500).json("Something went wrong while saving this quote.");
+      res.status(500).json("Something went wrong retreiving this quote.");
     }
   });
 
   // Add Quote
-  app.post("/api/quotes/add", (req, res) => {
+  app.post("/api/quotes/add", checkUser, (req, res) => {
+    console.log(req.body);
     const { author, quote } = req.body;
 
     const newQuote = User.findOne({ id: req.user.id }, (err, user) => {
@@ -32,7 +34,7 @@ module.exports = (app) => {
   });
 
   // Remove Quote
-  app.delete("/api/quotes/remove/:id", (req, res, next) => {
+  app.delete("/api/quotes/remove/:id", checkUser, (req, res, next) => {
     const user = User.findOne({ _id: req.user._id }, (err, user) => {
       user.savedQuotes.id(req.params.id).remove();
 

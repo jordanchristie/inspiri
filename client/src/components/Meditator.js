@@ -42,16 +42,16 @@ const breathe = keyframes`
 
     30% {
         transform: scale(1.2);
-        background: red;
+        background: rgb(255, 105, 97);
     }
 
     60% {
         transform: scale(1.2);
-        background: red;
+        background: rgb(255, 105, 97);
     }
     100% {
         transform: scale(1);
-        background: blue;
+        background: rgb(105, 97, 255);
     }
 `;
 
@@ -78,7 +78,7 @@ const InnerCircle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: blue;
+  background: rgb(105, 97, 255);
 
   &.meditate {
     animation: ${breathe} 10s linear infinite;

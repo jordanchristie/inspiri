@@ -8,11 +8,14 @@ export const JournalContextProvider = ({ children }) => {
   const [content, setContent] = useState("");
 
   async function addJournalEntry(entry) {
-    console.log(entry);
-    const res = await axios.post("/api/journal", entry);
-    const journalEntry = await res.data;
-
-    return journalEntry;
+    try {
+      const res = await axios.post("/api/journal", entry);
+      const journalEntry = await res.data;
+      return journalEntry;
+    } catch (error) {
+      console.log(error);
+      return { appMessage: error };
+    }
   }
 
   return (

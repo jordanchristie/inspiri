@@ -14,7 +14,8 @@ export const QuoteContextProvider = ({ children }) => {
   }
 
   async function saveQuoteToProfile(quote) {
-    const res = await axios.post("/api/quote/add", quote);
+    console.log(quote);
+    const res = await axios.post("/api/quotes/add", quote);
     const { data } = res;
 
     return { ...data, quoteSaved: true, appMessage: "Message Saved!" };

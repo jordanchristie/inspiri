@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import styled from "styled-components";
 import { UserContext } from "../context/userContext";
 
 const Header = () => {
   const { user } = useContext(UserContext);
 
+  console.log(user);
   return (
     <header>
       <NavBar>
@@ -24,7 +24,7 @@ const Header = () => {
           <li>
             <Link to="/mindfulness">Mindfulness</Link>
           </li>
-          {user !== undefined ? (
+          {user ? (
             <>
               <li>
                 <Link to="/dashboard">Profile</Link>
