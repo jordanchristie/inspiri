@@ -1,13 +1,24 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 import axios from "axios";
 
-const JournalContext = createContext();
+export const JournalContext = createContext();
 
-const addJournalEntry = async (entry) => {
-  const res = await axios.post("/api/journal", entry);
-  const { data } = await res;
+export const JournalContextProvider = ({ children }) => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
-  const journalEntry = data;
+  const addJournalEntry = async (entry) => {
+    const res = await axios.post("/api/journal", entry);
+    const journalEntry = res.data;
 
-  return journalEntry;
+    return journalEntry;
+  };
+
+  return (
+    <JournalContext.Provider
+      value={{ title, setTitle, content, setContent, addJournalEntry }}
+    >
+      {children}
+    </JournalContext.Provider>
+  );
 };

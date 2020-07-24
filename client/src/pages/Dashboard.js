@@ -6,7 +6,6 @@ import Card from "../components/Card";
 
 const Dashboard = () => {
   const { user, fetchUser } = useContext(UserContext);
-  console.log(user.savedQuotes);
   useEffect(() => {
     fetchUser();
   }, []);
@@ -21,7 +20,7 @@ const Dashboard = () => {
     <div id="dashboard-page">
       <section>
         <h1>User data goes here</h1>
-        {user.savedQuotes == undefined ? (
+        {user.savedQuotes === undefined ? (
           <p>
             {" "}
             You don't have any quotes yet.
