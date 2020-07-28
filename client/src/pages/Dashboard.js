@@ -10,6 +10,8 @@ const Dashboard = () => {
     fetchUser();
   }, []);
 
+  console.log(user);
+
   const renderSavedQuotes = () => {
     return user.savedQuotes.reverse().map((quote, i) => {
       return <Card key={i} {...quote} />;
@@ -20,14 +22,14 @@ const Dashboard = () => {
     <div id="dashboard-page">
       <section>
         <h1>User data goes here</h1>
-        {user.savedQuotes === null ? (
+        {user && user.savedQuotes.length ? (
+          renderSavedQuotes()
+        ) : (
           <p>
             {" "}
             You don't have any quotes yet.
-            <Link to="/explore"> Click here</Link> to start!
+            <Link to="/quotes"> Click here</Link> to start!
           </p>
-        ) : (
-          renderSavedQuotes()
         )}
       </section>
     </div>

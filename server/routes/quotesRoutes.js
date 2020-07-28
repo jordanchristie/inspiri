@@ -21,13 +21,13 @@ module.exports = (app) => {
   // Add Quote
   app.post("/api/quotes/add", checkUser, (req, res) => {
     console.log(req.body);
-    const { author, quote } = req.body;
+    const { quoteAuthor, quoteText } = req.body;
 
     const newQuote = User.findOne({ id: req.user.id }, (err, user) => {
       user.savedQuotes.push({
-        author,
-        quote,
-        isSaved: true,
+        quoteAuthor,
+        quoteText,
+        quoteSaved: true,
       });
       user.save();
     });

@@ -12,6 +12,8 @@ export const UserContextProvider = ({ children }) => {
 
     const user = res.data;
 
+    setIsLoggedIn(true);
+
     return setUser(user);
   };
 

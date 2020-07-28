@@ -5,7 +5,6 @@ import { UserContext } from "../context/userContext";
 
 const Header = () => {
   const { isLoggedIn } = useContext(UserContext);
-  console.log(isLoggedIn);
   return (
     <header>
       <NavBar>
