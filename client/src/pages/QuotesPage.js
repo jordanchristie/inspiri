@@ -11,8 +11,6 @@ const QuotesPage = () => {
     fetchRandomQuote();
   }, []);
 
-  console.log(randomQuote);
-
   return (
     <QuoteContextProvider>
       <h1>Explore</h1>
@@ -34,8 +32,15 @@ const NextQuote = styled.button`
   background: none;
   margin: 1em;
   font-size: 1rem;
+  cursor: pointer;
 
   .fa-arrow-right {
     margin-right: 0.5em;
+    transition: all 0.3s ease;
+  }
+
+  &:hover .fa-arrow-right {
+    transform: translatex(8px);
+    transition: all 0.3s ease;
   }
 `;

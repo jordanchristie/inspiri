@@ -20,13 +20,11 @@ const Meditator = () => {
   return (
     <>
       <MeditationWrapper>
-        <OuterCircle>
-          <InnerCircle
-            className={sessionStarted ? "meditate" : null}
-            onClick={() => (sessionStarted ? resetSession() : startSession())}
-          >
-            <Text>{text}</Text>
-          </InnerCircle>
+        <OuterCircle
+          onClick={() => (sessionStarted ? resetSession() : startSession())}
+        >
+          <InnerCircle className={sessionStarted ? "meditate" : null} />
+          <Text className={text === "Start" ? null : "fade"}>{text}</Text>
         </OuterCircle>
       </MeditationWrapper>
     </>
@@ -55,6 +53,15 @@ const breathe = keyframes`
     }
 `;
 
+const fade = keyframes`
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+`;
+
 const MeditationWrapper = styled.section`
   height: 350px;
   width: 350px;
@@ -66,6 +73,7 @@ const MeditationWrapper = styled.section`
 
 const OuterCircle = styled.div`
   border-radius: 50%;
+  position: relative;
   height: inherit;
   width: inherit;
 `;
@@ -86,6 +94,15 @@ const InnerCircle = styled.div`
 `;
 
 const Text = styled.h1`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
+  margin: 0;
+
+  &.fade {
+    animation: ${fade} 5s ease;
+  }
 `;

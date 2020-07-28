@@ -4,7 +4,8 @@ import axios from "axios";
 export const UserContext = createContext({});
 
 export const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const fetchUser = async () => {
     const res = await axios.get("/api/user");
@@ -15,7 +16,7 @@ export const UserContextProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, fetchUser }}>
+    <UserContext.Provider value={{ user, fetchUser, isLoggedIn }}>
       {children}
     </UserContext.Provider>
   );

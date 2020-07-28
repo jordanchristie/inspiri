@@ -20,7 +20,7 @@ const Dashboard = () => {
     <div id="dashboard-page">
       <section>
         <h1>User data goes here</h1>
-        {user.savedQuotes === undefined ? (
+        {user.savedQuotes === null ? (
           <p>
             {" "}
             You don't have any quotes yet.

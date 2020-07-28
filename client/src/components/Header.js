@@ -4,9 +4,8 @@ import styled from "styled-components";
 import { UserContext } from "../context/userContext";
 
 const Header = () => {
-  const { user } = useContext(UserContext);
-
-  console.log(user);
+  const { isLoggedIn } = useContext(UserContext);
+  console.log(isLoggedIn);
   return (
     <header>
       <NavBar>
@@ -24,7 +23,7 @@ const Header = () => {
           <li>
             <Link to="/mindfulness">Mindfulness</Link>
           </li>
-          {user ? (
+          {isLoggedIn ? (
             <>
               <li>
                 <Link to="/dashboard">Profile</Link>
