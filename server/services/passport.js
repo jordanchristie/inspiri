@@ -52,32 +52,32 @@ passport.use(
 
 // Facebook Strategy
 
-// passport.use(
-//   new FacebookStrategy(
-//     {
-//       clientID: keys.facebookClientID,
-//       clientSecret: keys.facebookClientSecret,
-//       callbackURL: "/auth/facebook/callback",
-//       profileFields: ["id", "name", "photos"],
-//       proxy: true
-//     },
-//     async (accessToken, refreshToken, profile, done) => {
-//       const existingUser = await User.findOne({ id: profile.id });
-//       if (existingUser) {
-//         return done(null, existingUser);
-//       }
-//       // Create new User
-//       const newUser = await new User({
-//         id: profile.id,
-//         fullName: profile.displayName,
-//         firstName: profile.name.givenName,
-//         avatarUrl: profile.photos[0].value,
-//         savedQuotes: []
-//       }).save();
-//       done(null, newUser);
-//     }
-//   )
-// );
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: keys.facebookClientID,
+      clientSecret: keys.facebookClientSecret,
+      callbackURL: "/auth/facebook/callback",
+      profileFields: ["id", "name", "photos"],
+      proxy: true,
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ id: profile.id });
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+      // Create new User
+      const newUser = await new User({
+        id: profile.id,
+        fullName: profile.displayName,
+        firstName: profile.name.givenName,
+        avatarUrl: profile.photos[0].value,
+        savedQuotes: [],
+      }).save();
+      done(null, newUser);
+    }
+  )
+);
 
 // Twitter Strategy
 
