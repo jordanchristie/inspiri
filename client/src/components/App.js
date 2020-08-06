@@ -7,6 +7,7 @@ import Dashboard from "../pages/Dashboard";
 import ExplorePage from "../pages/ExplorePage";
 import MindfulnessPage from "../pages/MindfulnessPage";
 import JournalingPage from "../pages/JournalingPage";
+import SignUpPage from "../pages/SignUpPage";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Header />
           <div className="container">
             <Route exact path="/" component={LandingPage} />
+            <Route path="/signup" component={SignUpPage} />
             <Route path="/quotes" component={ExplorePage} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/journal" component={JournalingPage} />
