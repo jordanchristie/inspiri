@@ -1,7 +1,7 @@
 const express = require("express"),
   mongoose = require("mongoose"),
   bodyParser = require("body-parser"),
-  //cors = require('cors'),
+  cors = require("cors"),
   cookieSession = require("cookie-session"),
   passport = require("passport"),
   keys = require("./config/keys"),
@@ -21,7 +21,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(cors({ credentials: true}));
+app.use(cors({ credentials: true }));
 
 // Session middleware
 
@@ -51,12 +51,6 @@ require("./routes/quotesRoutes")(app);
 // Serve static assets
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-
-  const path = require("path");
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
 }
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
