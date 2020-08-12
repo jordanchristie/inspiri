@@ -14,8 +14,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  const userId = mongoose.Types.ObjectId(id);
-  User.findById(userId, (err, user) => {
+  User.findById(id, (err, user) => {
     done(err, user);
   });
 });
@@ -36,7 +35,6 @@ passport.use(
       if (existingUser) {
         return done(null, existingUser);
       }
-
       // Create new User
       const newUser = await new User({
         username: profile.displayName,
@@ -103,25 +101,47 @@ passport.use(
   )
 );
 
+// Local Strategy
+
 passport.use(
+  "local",
   new LocalStrategy(async (username, password, done) => {
-    console.log(username, password);
-
     try {
-      const existingUser = await User.findOne({ username: username });
+      const existingUser = await User.findOne({ username });
+      // If login user doesn't exist, throw error
 
-      existingUser ? done(null, existingUser) : done(null, false);
+      if (!existingUser) {
+        return done(null, false, { message: "User not found." });
+      }
 
-      const newUser = await new User({
-        username,
-        password,
-        avatar: null,
-        savedQuotes: [],
-      }).save();
+      // If username exists, check password
 
-      done(null, newUser);
+      const validPassword = () =>
+        username && password === existingUser.password;
+
+      if (!validPassword) {
+        return done(null, false, { message: "Invalid password" });
+      }
+
+      // If username is found and password is valid, return the user
+
+      if (existingUser && validPassword) {
+        console.log("existingUser", existingUser);
+        done(null, existingUser);
+      }
+      // Otherwise, create a new user
+      else {
+        const newUser = await new User({
+          username,
+          password,
+          avatar: null,
+          savedQuotes: [],
+        }).save();
+
+        done(null, newUser);
+      }
     } catch (error) {
-      done(error);
+      done(error, false, { message: error });
     }
   })
 );

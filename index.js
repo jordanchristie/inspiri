@@ -32,6 +32,8 @@ app.use(
   })
 );
 
+app.use(express.static(`${__dirname}/client/public`));
+
 // Passport middleware
 
 app.use(passport.initialize());

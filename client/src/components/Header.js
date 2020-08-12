@@ -33,10 +33,10 @@ const Header = ({ user }) => {
           ) : (
             <>
               <li>
-                <a href="/api/logout">Login</a>
+                <Link to="/login">Login</Link>
               </li>
               <li>
-                <a href="/signup">Sign Up</a>
+                <Link to="/signup">Sign Up</Link>
               </li>
             </>
           )}

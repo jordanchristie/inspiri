@@ -11,8 +11,7 @@ class Dashboard extends Component {
     this.props.fetchUser();
   }
 
-  renderSavedQuotes = () => {
-    const { user } = this.props;
+  renderSavedQuotes = (user) => {
     return user.savedQuotes.reverse().map((quote, i) => {
       return <Card key={i} {...quote} />;
     });
@@ -20,17 +19,19 @@ class Dashboard extends Component {
 
   render() {
     const { user } = this.props;
+    console.log(user);
     return (
       <div id="dashboard-page">
         <section>
-          {user.savedQuotes === undefined ? (
+          <h1>Hello {user.username}</h1>
+          {user.savedQuotes && user.savedQuotes.length ? (
+            this.renderSavedQuotes(user)
+          ) : (
             <p>
               {" "}
               You don't have any quotes yet.
               <Link to="/explore"> Click here</Link> to start!
             </p>
-          ) : (
-            this.renderSavedQuotes()
           )}
         </section>
       </div>

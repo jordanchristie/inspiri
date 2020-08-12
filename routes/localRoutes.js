@@ -5,10 +5,19 @@ const express = require("express"),
 module.exports = (app) => {
   app.post(
     "/auth/local",
-    passport.authenticate("local", { failureRedirect: "/signup" }),
+    passport.authenticate(
+      "local"
+      // {
+      //   successRedirect: "/dashboard",
+      //   failureRedirect: "/signup",
+      // }
+    ),
     (req, res) => {
-      console.log(res);
-      res.redirect("/dashboard");
+      if (req.user) {
+        res.redirect("/dashboard");
+      } else {
+        res.redirect("/login");
+      }
     }
   );
 };

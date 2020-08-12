@@ -14,12 +14,9 @@ class SignUpPage extends Component {
   }
 
   handleChange = (e) => {
-    this.setState(
-      {
-        [e.target.name]: e.target.value,
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
 
   checkPassword = () => {
@@ -27,7 +24,8 @@ class SignUpPage extends Component {
   };
 
   handleSubmit = (e) => {
-    const { username, password } = this.state;
+    let { username, password } = this.state;
+    username = username.toLowerCase();
     e.preventDefault();
 
     this.checkPassword();
@@ -78,7 +76,7 @@ class SignUpPage extends Component {
           {errors ? (
             <p style={{ color: "red" }}>Passwords don't match</p>
           ) : null}
-          <input type="Submit" value="Submit" />
+          <input type="Submit" defaultValue="Submit" />
         </form>
       </div>
     );
