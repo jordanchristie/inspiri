@@ -50,7 +50,13 @@ require("./routes/quotesRoutes")(app);
 
 // Serve static assets
 if (process.env.NODE_ENV === "production") {
+  const path = require("path");
+
   app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendfile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 }
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
